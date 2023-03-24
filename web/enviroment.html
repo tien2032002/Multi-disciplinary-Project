@@ -10,10 +10,14 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <title>enviroment</title>
     <!-- important! google CDN -->
+    <script src="fan.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     
 </head>
-<body>
+
+<!-- add onload -->
+<body onload="clearAllInterval(); humidInterval = setInterval(updateSensorData, 1000, 'temp')">
     <div class="container-fluid">
         <div class="row mw-100">
             <!-- vertical navbar -->
@@ -91,7 +95,7 @@
                     <div class="h1">Tình trạng môi trường</div>
                 </div>
 
-                <button onclick="changeFanMode()">
+                <!-- <button onclick="changeFanMode()">
                     Change mode
                 </button>
                 
@@ -109,110 +113,29 @@
 
                 <button class="fanSpeedControlButton" onclick="changeFanSpeed(100)">
                     4
-                </button>
+                </button> -->
 
-                <div class="test"></div>
-                <script>
-                    //functions to change mode of fan
-                    function changeModeToOn(){
-                        $.ajax({
-                            url:'https://io.adafruit.com/api/v2/mtuan88/feeds/mode/data',
-                            datatype:'json',
-                            type:'POST',
-                            headers:{
-                                'Content-Type':'application/json',
-                                'X-AIO-Key':'aio_AMHW43djyJRSqRZKz9awBW2UEQlV'
-                            },
-                            data:JSON.stringify({"value":"1"}),
-                            processData:false,
-                            success:function(){
-                                console.log("ON");
-                            },
-                            error:function(jqxhr,textStatus,errorThrown){
-                                console.log(errorThrown);
-                            }
-                        });
-                    }
 
-                    function changeModeToOff(){
-                        $.ajax({
-                            url:'https://io.adafruit.com/api/v2/mtuan88/feeds/mode/data',
-                            datatype:'json',
-                            type:'POST',
-                            headers:{
-                                'Content-Type':'application/json',
-                                'X-AIO-Key':'aio_AMHW43djyJRSqRZKz9awBW2UEQlV'
-                            },
-                            data:JSON.stringify({"value":"0"}),
-                            processData:false,
-                            success:function(){
-                                console.log("OFF");
-                            },
-                            error:function(jqxhr,textStatus,errorThrown){
-                                console.log(errorThrown);
-                            }
-                        });
-                    }
+                <!-- add chart -->
 
-                    function changeFanMode(){
-                        $.ajax({
-                            url:'https://io.adafruit.com/api/v2/mtuan88/feeds/mode/data',
-                            dataType:'json',
-                            type:'GET',
-                            headers:{
-                                'Content-Type':'application/json',
-                                'X-AIO-Key':'aio_AMHW43djyJRSqRZKz9awBW2UEQlV'
-                            },
-                            data:{get_param: 'value'},
-                            success: function (data){
-                                if(data[0].value==0){
-                                    console.log(data[0].value);
-                                    changeModeToOn();
-                                    enableFanSpeedButton();
-                                }
-                                else{
-                                    console.log(data[0].value);
-                                    changeModeToOff();
-                                    disableFanSpeedButton();
-                                }
-                                
-                            }
-                        }); 
+                <canvas id="myChart" style="width:80%;max-width:1000px; margin: 0px auto"></canvas>
+                
 
-                        
-                    }
+                <div class="row chartButton"> 
+                    <div class="col d-flex justify-content-center">
+                        <button type="button" id="tempButton" class="btn btn-success" onclick="tempProcess()">Nhiệt độ</button>
+                    </div>
+                    <div class="col d-flex justify-content-center">
+                        <button type="button" id="humidButton" class="btn btn-outline-success" onclick="humidProcess()">Độ ẩm</button>
+                    </div>
+                </div>
 
-                    //disable fan speed button
-                    function disableFanSpeedButton(){
-                        document.querySelectorAll(".fanSpeedControlButton").forEach(element =>element.setAttribute('disabled',''));
-                    }
-                    //enable fan speed button
-                    function enableFanSpeedButton(){
-                        document.querySelectorAll(".fanSpeedControlButton").forEach(element =>element.removeAttribute('disabled'));
-                    }
-                    //function to change speed of fan
-                    function changeFanSpeed(value){
-                        $.ajax({
-                            url:'https://io.adafruit.com/api/v2/mtuan88/feeds/fan/data',
-                            datatype:'json',
-                            type:'POST',
-                            headers:{
-                                'Content-Type':'application/json',
-                                'X-AIO-Key':'aio_AMHW43djyJRSqRZKz9awBW2UEQlV'
-                            },
-                            data:JSON.stringify({"value":value}),
-                            processData:false,
-                            success:function(){
-                                console.log(value);
-                            },
-                            error:function(jqxhr,textStatus,errorThrown){
-                                console.log(errorThrown);
-                            }
-                        });
-                    }
-                </script>
+                <!-- end add chart -->
             </div>
         </div>
     </div>
+
+    <!-- charJs -->
+    <script src="chartDraw.js"></script>
 </body>
 </html>
