@@ -12,9 +12,10 @@
     <!-- important! google CDN -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> 
     <script src="./controlFan.js"> </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     
 </head>
-<body>
+<body onload="clearAllInterval(); humidInterval = setInterval(updateSensorData, 1000, 'temp')">
     <div class="container-fluid">
         <div class="row mw-100">
             <!-- vertical navbar -->
@@ -91,12 +92,21 @@
                 <div class="content__title">
                     <div class="h1">Tình trạng môi trường</div>
                     <div class="h3">Trạm Bách Khoa</div>
+                    <br>
                 </div>
 
                 <div class="enviromentChart card w-100 margin-left-10 margin-bot-20" style="min-height: 18rem;">
-
+                    <canvas id="myChart" style="width:80%; max-width:1000px; margin: 0px auto"></canvas>
                 </div>
-
+                <div class="row chartButton"> 
+                    <div class="col d-flex justify-content-center">
+                        <button type="button" id="tempButton" class="btn btn-success" onclick="tempProcess()">Nhiệt độ</button>
+                    </div>
+                    <div class="col d-flex justify-content-center">
+                        <button type="button" id="humidButton" class="btn btn-outline-success" onclick="humidProcess()">Độ ẩm</button>
+                    </div>
+                </div>
+                <br>
                 <div class="button-list margin-left-10">
                     <button class="fanModeControlButton btn btn-secondary" onclick="changeFanMode()">
                         Change mode
@@ -124,5 +134,7 @@
 
         </div>
     </div>
+     <!-- charJs -->
+     <script src="chartDraw.js"></script>
 </body>
 </html>
