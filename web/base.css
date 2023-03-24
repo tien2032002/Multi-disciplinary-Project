@@ -2,3 +2,7 @@
     --primary-color: #007A5A;
     --subordinate-color:#00AF66;
 }
+
+*{
+    box-sizing: inherit;
+}
