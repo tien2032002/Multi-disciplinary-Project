@@ -11,6 +11,7 @@
     <title>enviroment</title>
     <!-- important! google CDN -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> 
+    <script src="./controlFan.js"> </script>
     
 </head>
 <body>
@@ -29,7 +30,7 @@
                 <div class="logined-user d-flex align-items-center">
                     <img src="./assets/img/294488601_3134523420097821_7397663236363416758_n.jpg" alt="" class="user-img">
                     <div class="user-name margin-left-20">
-                        <h6 class="text-white">Hoa Nở Tuyết Tan</h6>
+                        <h6 class="text-white">ADMIN</h6>
                     </div>
                 </div>
 
@@ -86,132 +87,41 @@
             </div>
 
             <!-- content -->
-            <div class="content col">
+            <div class="content col vh-100">
                 <div class="content__title">
                     <div class="h1">Tình trạng môi trường</div>
+                    <div class="h3">Trạm Bách Khoa</div>
                 </div>
 
-                <button onclick="changeFanMode()">
-                    Change mode
-                </button>
+                <div class="enviromentChart card w-100 margin-left-10 margin-bot-20" style="min-height: 18rem;">
+
+                </div>
+
+                <div class="button-list margin-left-10">
+                    <button class="fanModeControlButton btn btn-secondary" onclick="changeFanMode()">
+                        Change mode
+                    </button>
+    
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-secondary fanSpeedControlButton btn-outline-light" onclick="changeFanSpeed(25)">
+                            1
+                        </button>
+        
+                        <button type="button" class="btn btn-secondary fanSpeedControlButton btn-outline-light" onclick="changeFanSpeed(50)">
+                            2
+                        </button>
+        
+                        <button type="button" class="btn btn-secondary fanSpeedControlButton btn-outline-light" onclick="changeFanSpeed(75)">
+                            3
+                        </button>
+        
+                        <button type="button" class="btn btn-secondary fanSpeedControlButton btn-outline-light" onclick="changeFanSpeed(100)">
+                            4
+                        </button>
+                    </div>
+                </div>
                 
-                <button class="fanSpeedControlButton" onclick="changeFanSpeed(25)">
-                    1
-                </button>
 
-                <button class="fanSpeedControlButton" onclick="changeFanSpeed(50)">
-                    2
-                </button>
-
-                <button class="fanSpeedControlButton" onclick="changeFanSpeed(75)">
-                    3
-                </button>
-
-                <button class="fanSpeedControlButton" onclick="changeFanSpeed(100)">
-                    4
-                </button>
-
-                <div class="test"></div>
-                <script>
-                    //functions to change mode of fan
-                    function changeModeToOn(){
-                        $.ajax({
-                            url:'https://io.adafruit.com/api/v2/mtuan88/feeds/mode/data',
-                            datatype:'json',
-                            type:'POST',
-                            headers:{
-                                'Content-Type':'application/json',
-                                'X-AIO-Key':'aio_AMHW43djyJRSqRZKz9awBW2UEQlV'
-                            },
-                            data:JSON.stringify({"value":"1"}),
-                            processData:false,
-                            success:function(){
-                                console.log("ON");
-                            },
-                            error:function(jqxhr,textStatus,errorThrown){
-                                console.log(errorThrown);
-                            }
-                        });
-                    }
-
-                    function changeModeToOff(){
-                        $.ajax({
-                            url:'https://io.adafruit.com/api/v2/mtuan88/feeds/mode/data',
-                            datatype:'json',
-                            type:'POST',
-                            headers:{
-                                'Content-Type':'application/json',
-                                'X-AIO-Key':'aio_AMHW43djyJRSqRZKz9awBW2UEQlV'
-                            },
-                            data:JSON.stringify({"value":"0"}),
-                            processData:false,
-                            success:function(){
-                                console.log("OFF");
-                            },
-                            error:function(jqxhr,textStatus,errorThrown){
-                                console.log(errorThrown);
-                            }
-                        });
-                    }
-
-                    function changeFanMode(){
-                        $.ajax({
-                            url:'https://io.adafruit.com/api/v2/mtuan88/feeds/mode/data',
-                            dataType:'json',
-                            type:'GET',
-                            headers:{
-                                'Content-Type':'application/json',
-                                'X-AIO-Key':'aio_AMHW43djyJRSqRZKz9awBW2UEQlV'
-                            },
-                            data:{get_param: 'value'},
-                            success: function (data){
-                                if(data[0].value==0){
-                                    console.log(data[0].value);
-                                    changeModeToOn();
-                                    enableFanSpeedButton();
-                                }
-                                else{
-                                    console.log(data[0].value);
-                                    changeModeToOff();
-                                    disableFanSpeedButton();
-                                }
-                                
-                            }
-                        }); 
-
-                        
-                    }
-
-                    //disable fan speed button
-                    function disableFanSpeedButton(){
-                        document.querySelectorAll(".fanSpeedControlButton").forEach(element =>element.setAttribute('disabled',''));
-                    }
-                    //enable fan speed button
-                    function enableFanSpeedButton(){
-                        document.querySelectorAll(".fanSpeedControlButton").forEach(element =>element.removeAttribute('disabled'));
-                    }
-                    //function to change speed of fan
-                    function changeFanSpeed(value){
-                        $.ajax({
-                            url:'https://io.adafruit.com/api/v2/mtuan88/feeds/fan/data',
-                            datatype:'json',
-                            type:'POST',
-                            headers:{
-                                'Content-Type':'application/json',
-                                'X-AIO-Key':'aio_AMHW43djyJRSqRZKz9awBW2UEQlV'
-                            },
-                            data:JSON.stringify({"value":value}),
-                            processData:false,
-                            success:function(){
-                                console.log(value);
-                            },
-                            error:function(jqxhr,textStatus,errorThrown){
-                                console.log(errorThrown);
-                            }
-                        });
-                    }
-                </script>
-            </div>
         </div>
     </div>
 </body>
