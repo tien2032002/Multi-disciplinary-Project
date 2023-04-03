@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 11, 2023 at 11:20 AM
+-- Generation Time: Apr 03, 2023 at 05:03 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -29,28 +29,38 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `bike` (
   `id` varchar(10) NOT NULL,
-  `bought_date` date DEFAULT curdate(),
-  `supplier` varchar(50) DEFAULT NULL,
-  `status` enum('ok','broken','maintaining','hired') DEFAULT 'ok',
   `hired_hours` time DEFAULT '00:00:00',
-  `revenue` int(11) DEFAULT NULL
+  `price` int(10) DEFAULT 10000,
+  `status` enum('ok','broken','maintaining','hired') DEFAULT 'ok',
+  `name` varchar(50) NOT NULL DEFAULT 'abc',
+  `img_URL` varchar(50) NOT NULL DEFAULT 'abc.png',
+  `paint` varchar(50) NOT NULL DEFAULT 'abc',
+  `frame` varchar(50) NOT NULL DEFAULT 'abc',
+  `saddle` varchar(50) NOT NULL DEFAULT 'abc',
+  `size_x` int(10) NOT NULL DEFAULT 100,
+  `size_y` int(10) NOT NULL DEFAULT 150,
+  `size_z` int(10) NOT NULL DEFAULT 50,
+  `weight` int(10) NOT NULL DEFAULT 20,
+  `payload` int(10) NOT NULL DEFAULT 100,
+  `min_height` int(10) NOT NULL DEFAULT 150,
+  `note` varchar(50) NOT NULL DEFAULT 'abc'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `bike`
 --
 
-INSERT INTO `bike` (`id`, `bought_date`, `supplier`, `status`, `hired_hours`, `revenue`) VALUES
-('0001', '2023-01-01', 'abc', 'ok', '100:00:00', 10000000),
-('0002', '2023-01-01', 'abc', 'hired', '70:00:00', 7000000),
-('0003', '2023-01-01', 'xyz', 'ok', '100:00:00', 10000000),
-('0004', '2023-01-01', 'abc', 'maintaining', '40:00:00', 4000000),
-('0005', '2023-01-01', 'xyz', 'broken', '100:00:00', 10000000),
-('0006', '2023-01-01', 'abc', 'ok', '100:00:00', 10000000),
-('0007', '2023-01-01', 'abc', 'hired', '90:00:00', 9000000),
-('0008', '2023-01-01', 'xyz', 'maintaining', '100:00:00', 10000000),
-('0009', '2023-01-01', 'xyz', 'ok', '100:00:00', 10000000),
-('0010', '2023-01-01', 'abc', 'ok', '50:00:00', 5000000);
+INSERT INTO `bike` (`id`, `hired_hours`, `price`, `status`, `name`, `img_URL`, `paint`, `frame`, `saddle`, `size_x`, `size_y`, `size_z`, `weight`, `payload`, `min_height`, `note`) VALUES
+('0001', '100:00:00', 20000, 'ok', 'xe leo nui', 'xe_leo_nui.png', 'abc', 'abc', 'abc', 100, 150, 50, 20, 100, 150, 'abc'),
+('0002', '70:00:00', 10000, 'hired', 'xe di cho', 'xe_di_cho.png', 'abc', 'abc', 'abc', 100, 150, 50, 20, 100, 150, 'abc'),
+('0003', '100:00:00', 15000, 'ok', 'xe dia hinh', 'xe_dia_hinh.png', 'abc', 'abc', 'abc', 100, 150, 50, 20, 100, 150, 'abc'),
+('0004', '40:00:00', 15000, 'maintaining', 'xe the thao', 'xe_dia_hinh.png', 'abc', 'abc', 'abc', 100, 150, 50, 20, 100, 150, 'abc'),
+('0005', '100:00:00', 10000, 'broken', 'xe du lich', 'xe_du_lich.png', 'abc', 'abc', 'abc', 100, 150, 50, 20, 100, 150, 'abc'),
+('0006', '100:00:00', 15000, 'ok', 'xe dia hinh', 'xe_dia_hinh.png', 'abc', 'abc', 'abc', 100, 150, 50, 20, 100, 150, 'abc'),
+('0007', '90:00:00', 10000, 'hired', 'xe du lich', 'xe_du_lich.png', 'abc', 'abc', 'abc', 100, 150, 50, 20, 100, 150, 'abc'),
+('0008', '100:00:00', 15000, 'maintaining', 'xe the thao', 'xe_the_thao.png', 'abc', 'abc', 'abc', 100, 150, 50, 20, 100, 150, 'abc'),
+('0009', '100:00:00', 15000, 'ok', 'xe the thao', 'xe_the_thao.png', 'abc', 'abc', 'abc', 100, 150, 50, 20, 100, 150, 'abc'),
+('0010', '50:00:00', 20000, 'ok', 'xe leo nui', 'xe_leo_nui.png', 'abc', 'abc', 'abc', 100, 150, 50, 20, 100, 150, 'abc');
 
 -- --------------------------------------------------------
 
@@ -107,7 +117,7 @@ INSERT INTO `have_bikes` (`station_id`, `bike_id`) VALUES
 CREATE TABLE `hire` (
   `customer_id` varchar(12) NOT NULL,
   `bike_id` varchar(10) NOT NULL,
-  `started_time` datetime DEFAULT curtime(),
+  `start_time` datetime NOT NULL DEFAULT curtime(),
   `end_time` datetime DEFAULT addtime(current_timestamp(),'01:00:00'),
   `total_time` time DEFAULT '01:00:00',
   `revenue` int(11) DEFAULT NULL,
@@ -118,7 +128,7 @@ CREATE TABLE `hire` (
 -- Dumping data for table `hire`
 --
 
-INSERT INTO `hire` (`customer_id`, `bike_id`, `started_time`, `end_time`, `total_time`, `revenue`, `report`) VALUES
+INSERT INTO `hire` (`customer_id`, `bike_id`, `start_time`, `end_time`, `total_time`, `revenue`, `report`) VALUES
 ('123456789001', '0002', '2023-03-11 17:10:18', '2023-03-11 18:10:18', '01:00:00', 100000, NULL),
 ('123456789011', '0007', '2023-03-11 17:10:35', '2023-03-11 18:10:35', '01:00:00', 100000, NULL);
 
@@ -291,7 +301,7 @@ ALTER TABLE `have_bikes`
 -- Indexes for table `hire`
 --
 ALTER TABLE `hire`
-  ADD PRIMARY KEY (`customer_id`,`bike_id`),
+  ADD PRIMARY KEY (`customer_id`,`bike_id`,`start_time`),
   ADD KEY `bike_id` (`bike_id`);
 
 --
