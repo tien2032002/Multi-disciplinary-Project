@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./base.css">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="view\style\base.css">
+    <link rel="stylesheet" href="view\style\style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <title>enviroment</title>
@@ -42,12 +42,12 @@
                         </svg>
                         <a class="nav-link active text-white nopadding" href="#">Thông tin người dùng</a>
                     </li>
-                    <li class="nav-item d-flex align-items-center selected">
+                    <li class="nav-item d-flex align-items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-list text-white" viewBox="0 0 16 16">
                             <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
                             <path d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zM4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"/>
                         </svg>
-                        <a class="nav-link active text-white nopadding " href="#">Danh sách trạm</a>
+                        <a class="nav-link active text-white nopadding" href="station_list.html">Danh sách trạm</a>
                     </li>
                     <li class="nav-item d-flex align-items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell text-white" viewBox="0 0 16 16">
@@ -62,12 +62,12 @@
                         </svg>
                         <a class="nav-link active text-white nopadding" href="enviroment.html">Tình trạng môi trường</a>
                     </li>
-                    <li class="nav-item d-flex align-items-center">
+                    <li class="nav-item d-flex align-items-center selected">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-receipt text-white" viewBox="0 0 16 16">
                             <path d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z"/>
                             <path d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z"/>
                         </svg>
-                        <a class="nav-link active text-white nopadding" href="revenue.html">Doanh thu</a>
+                        <a class="nav-link active text-white nopadding " href="#">Doanh thu</a>
                     </li>
                     <li class="nav-item d-flex align-items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear text-white" viewBox="0 0 16 16">
@@ -89,126 +89,95 @@
 
             <!-- content -->
             <div class="content col vh-100">
-                <!-- start: breadcrum -->
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item">
-                            <a class="link-dark" href="station_list.html">Danh sách trạm</a>
-                        </li>
-                        <li class="breadcrumb-item active" aria-current="page">Trạm Bách Khoa</li>
-                    </ol>
-                </nav>
-                <!-- end: breadcrum -->
+                <div class="content__title">
+                    <div class="h1">Doanh thu tháng</div>
+                </div>
 
-                <!-- page content -->
-                <!-- begin: station list table -->
-                <table class="table table-striped table-hover">
-                    <thead>
-                      <tr>         
-                        <th scope="col">ID </th>
-                        <th scope="col">Tên xe</th>
-                        <th scope="col">Số lần thuê</th>
-                        <th scope="col">Giá thuê</th>
-                        <th scope="col">Tình trạng</th>
-                        <th scope="col">Tác vụ</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">101</th>
-                        <td>
-                            <a href="bike_detail.html" style="text-decoration: none;" class="link-dark">Xe đạp du lịch</a>
-                        </td>
-                        <td>10</td>
-                        <td>10.000/1h</td>
-                        <td>Bình thường</td>
-                        <td>
-                            
-                            <button type="button" class="btn btn-sm btn-primary">Sửa</button>
-                            <button type="button" class="btn btn-sm btn-danger">Xóa</button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">102</th>
-                        <td>Xe đạp leo núi</td>
-                        <td>12</td>
-                        <td>10.000/1h</td>
-                        <td>Bình thường</td>
-                        <td>
-                            
-                            <button type="button" class="btn btn-sm btn-primary">Sửa</button>
-                            <button type="button" class="btn btn-sm btn-danger">Xóa</button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">103</th>
-                        <td>Xe đạp ba bánh</td>
-                        <td>14</td>
-                        <td>10.000/1h</td>
-                        <td>Bình thường</td>
-                        <td>
-                            
-                            <button type="button" class="btn btn-sm btn-primary">Sửa</button>
-                            <button type="button" class="btn btn-sm btn-danger">Xóa</button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">104</th>
-                        <td>Xe đạp mini</td>
-                        <td>16</td>
-                        <td>10.000/1h</td>
-                        <td>Bình thường</td>
-                        <td>
-                            
-                            <button type="button" class="btn btn-sm btn-primary">Sửa</button>
-                            <button type="button" class="btn btn-sm btn-danger">Xóa</button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">105</th>
-                        <td>Xe đạp trợ lực điện</td>
-                        <td>18</td>
-                        <td>10.000/1h</td>
-                        <td>Hư bình điện</td>
-                        <td>
-                            
-                            <button type="button" class="btn btn-sm btn-primary">Sửa</button>
-                            <button type="button" class="btn btn-sm btn-danger">Xóa</button>
-                        </td>
-                      </tr>
-                    </tbody>
-                </table>
-                <button type="button" class="btn btn-sm btn-primary">Thêm xe mới</button>
-                <!-- end: station list table -->
-
-                <!-- begin:pagination -->
-                <nav aria-label="Page navigation ">
-                    <ul class="pagination d-flex justify-content-end">
-                      <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                          <span aria-hidden="true">&laquo;</span>
-                          
-                        </a>
-                      </li>
-                      <li class="page-item"><a class="page-link active" href="#">1</a></li>
-                      <li class="page-item"><a class="page-link" href="#">2</a></li>
-                      <li class="page-item"><a class="page-link" href="#">3</a></li>
-                      <li class="page-item"><a class="page-link" href="#">4</a></li>
-                      <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                          <span aria-hidden="true">&raquo;</span>
-                          
-                        </a>
-                      </li>
-                    </ul>
-                </nav>
-                <!-- end:pagination -->
-                
+                <div class="revenueChart card w-100 margin-left-10 margin-bot-20" style="min-height: 14rem;">
+                    
+                </div>
+                <!-- begin: detail revenue -->
+                <div class="detail-revenue">
+                    <div class="detail-revenue__title">
+                        <div class="h4">Chi tiết doanh thu tháng 1</div>
+                    </div>
+                    <!-- begin: detail revenue table -->
+                    <table class="table table-striped table-hover">
+                        <thead>
+                          <tr>         
+                            <th scope="col">Ngày </th>
+                            <th scope="col">Doanh thu</th>
+                            <th scope="col">Tổng số giao dịch</th>
+                            <th scope="col">Chi phí bảo dưỡng</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">1/4</th>
+                            <td>1.000.000</td>
+                            <td>100</td>
+                            <td>500.000</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">2/4</th>
+                            <td>2.000.000</td>
+                            <td>200</td>
+                            <td>100.000</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">3/4</th>
+                            <td>3.000.000</td>
+                            <td>300</td>
+                            <td>150.000</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">4/4</th>
+                            <td>4.000.000</td>
+                            <td>400</td>
+                            <td>200.000</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">5/4</th>
+                            <td>4.000.000</td>
+                            <td>400</td>
+                            <td>200.000</td>
+                          </tr>
+                        </tbody>
+                    </table>
+                    <!-- end: detail revenue table -->
+                    
+                    <!-- begin: detail revenue pagination -->
+                    <nav aria-label="Page navigation ">
+                        <ul class="pagination d-flex justify-content-end">
+                          <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Previous">
+                              <span aria-hidden="true">&laquo;</span>
+                              
+                            </a>
+                          </li>
+                          <li class="page-item"><a class="page-link active" href="#">1</a></li>
+                          <li class="page-item"><a class="page-link" href="#">2</a></li>
+                          <li class="page-item"><a class="page-link" href="#">3</a></li>
+                          <li class="page-item"><a class="page-link" href="#">4</a></li>
+                          <li class="page-item"><a class="page-link" href="#">5</a></li>
+                          <li class="page-item"><a class="page-link" href="#">6</a></li>
+                          <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                              <span aria-hidden="true">&raquo;</span>
+                              
+                            </a>
+                          </li>
+                        </ul>
+                    </nav>
+                    <!-- end: detail revenue pagination -->
+                </div>
+                <!-- end: detail revenue -->
                 
             </div>
             <!-- end: content -->
         </div>
     </div>
-    
+     <!-- charJs -->
+     <script src="chartDraw.js"></script>
 </body>
 </html>

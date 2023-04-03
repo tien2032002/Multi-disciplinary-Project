@@ -4,32 +4,48 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./base.css">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="view\style\base.css">
+    <link rel="stylesheet" href="view\style\style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <title>enviroment</title>
     <!-- important! google CDN -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> 
-    <script src="./controlFan.js"> </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-    
+    <script>
+        //get content using ajax
+        function getMainContent(link) {
+            $.ajax({
+                // The link we are accessing.
+                url: link,
+                    
+                // The type of request.
+                type: "get",
+                    
+                // The type of data that is getting returned.
+                dataType: "html",
+                success: function( strData ){
+                    document.getElementById("mainContent").innerHTML = strData;
+                }
+            });
+        }
+    </script>
 </head>
-<body onload="clearAllInterval(); humidInterval = setInterval(updateSensorData, 1000, 'temp')">
+<body onload="getMainContent('index.php?controller=manager&action=station_list')">
     <div class="container-fluid">
         <div class="row mw-100">
             <!-- vertical navbar -->
             <div class="col-md-auto background-primary-color vh-100 nopadding">
                 <!-- project name -->
                 <div class="project d-flex align-items-center">
-                    <img src="./assets/img/project-logo.png" alt="" class="project-logo">
+                    <img src="assets\img\project-logo.png" alt="prjLogo" class="project-logo">
                     <div class="project-name margin-left-10 ">
                         <h4 class="text-white">TRẠM XE <br> THÔNG MINH</h4>
                     </div>
                 </div>
                 <!-- logined user -->
                 <div class="logined-user d-flex align-items-center">
-                    <img src="./assets/img/294488601_3134523420097821_7397663236363416758_n.jpg" alt="" class="user-img">
+                    <img src="assets\img\294488601_3134523420097821_7397663236363416758_n.jpg" alt="admin-avatar" class="user-img">
                     <div class="user-name margin-left-20">
                         <h6 class="text-white">ADMIN</h6>
                     </div>
@@ -53,7 +69,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell text-white" viewBox="0 0 16 16">
                             <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
                         </svg>
-                        <a class="nav-link active text-white nopadding" href="#">Báo cáo tình trạng xe</a>
+                        <a class="nav-link active text-white nopadding" href="">Báo cáo tình trạng xe</a>
                     </li>
                     <li class="nav-item d-flex align-items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-thermometer-sun text-white" viewBox="0 0 16 16">
@@ -67,7 +83,7 @@
                             <path d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z"/>
                             <path d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z"/>
                         </svg>
-                        <a class="nav-link active text-white nopadding" href="revenue.html">Doanh thu</a>
+                        <a class="nav-link active text-white nopadding" href="index.php?controller=manager&action=revenue">Doanh thu</a>
                     </li>
                     <li class="nav-item d-flex align-items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear text-white" viewBox="0 0 16 16">
@@ -88,110 +104,7 @@
             </div>
 
             <!-- content -->
-            <div class="content col vh-100">
-                <!-- page title -->
-                <div class="content__title">
-                    <div class="h1">Danh sách trạm</div>
-                    <br>
-                </div>
-                <!-- page content -->
-                <!-- begin: station list table -->
-                <table class="table table-striped table-hover">
-                    <thead>
-                      <tr>         
-                        <th scope="col">ID </th>
-                        <th scope="col">Tên trạm</th>
-                        <th scope="col">Địa chỉ</th>
-                        <th scope="col">Tổng doanh thu</th>
-                        <th scope="col">Tác vụ</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">001</th>
-                        <td>
-                            <a href="station_detail.html" class="link-dark" style="text-decoration: none;">Bách Khoa</a>
-                        </td>
-                        <td>128 Đ. Tạ Quang Bửu</td>
-                        <td>500.000</td>
-                        <td>
-                            <button type="button" onclick="location.href='enviroment.html'" class="btn btn-sm btn-info">Môi trường</button>
-                            <button type="button" class="btn btn-sm btn-primary">Sửa</button>
-                            <button type="button" class="btn btn-sm btn-danger">Xóa</button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">002</th>
-                        <td>Khoa học tự nhiên</td>
-                        <td>227 Đ. Nguyễn Văn Cừ</td>
-                        <td>100.000</td>
-                        <td>
-                            <button type="button" onclick="location.href='enviroment.html'" class="btn btn-sm btn-info">Môi trường</button>
-                            <button type="button" class="btn btn-sm btn-primary">Sửa</button>
-                            <button type="button" class="btn btn-sm btn-danger">Xóa</button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">003</th>
-                        <td>Nhân văn</td>
-                        <td>12 Đ. Đinh Tiên Hoàng</td>
-                        <td>150.000</td>
-                        <td>
-                            <button type="button" onclick="location.href='enviroment.html'" class="btn btn-sm btn-info">Môi trường</button>
-                            <button type="button" class="btn btn-sm btn-primary">Sửa</button>
-                            <button type="button" class="btn btn-sm btn-danger">Xóa</button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">004</th>
-                        <td>Quốc tế</td>
-                        <td>234 Đ. Pasteur</td>
-                        <td>200.000</td>
-                        <td>
-                            <button type="button" onclick="location.href='enviroment.html'" class="btn btn-sm btn-info">Môi trường</button>
-                            <button type="button" class="btn btn-sm btn-primary">Sửa</button>
-                            <button type="button" class="btn btn-sm btn-danger">Xóa</button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">005</th>
-                        <td>Kinh tế luật</td>
-                        <td>Số 669 Quốc lộ 1</td>
-                        <td>200.000</td>
-                        <td>
-                            <button type="button" onclick="location.href='enviroment.html'" class="btn btn-sm btn-info">Môi trường</button>
-                            <button type="button" class="btn btn-sm btn-primary">Sửa</button>
-                            <button type="button" class="btn btn-sm btn-danger">Xóa</button>
-                        </td>
-                      </tr>
-                    </tbody>
-                </table>
-                <button type="button" class="btn btn-sm btn-primary">Thêm trạm mới</button>
-                <!-- end: station list table -->
-
-                <!-- begin:pagination -->
-                <nav aria-label="Page navigation ">
-                    <ul class="pagination d-flex justify-content-end">
-                      <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                          <span aria-hidden="true">&laquo;</span>
-                          
-                        </a>
-                      </li>
-                      <li class="page-item"><a class="page-link active" href="#">1</a></li>
-                      <li class="page-item"><a class="page-link" href="#">2</a></li>
-                      <li class="page-item"><a class="page-link" href="#">3</a></li>
-                      <li class="page-item"><a class="page-link" href="#">4</a></li>
-                      <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                          <span aria-hidden="true">&raquo;</span>
-                          
-                        </a>
-                      </li>
-                    </ul>
-                </nav>
-                <!-- end:pagination -->
-                
+            <div class="content col vh-100" id="mainContent">
                 
             </div>
             <!-- end: content -->
