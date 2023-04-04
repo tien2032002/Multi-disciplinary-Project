@@ -4,18 +4,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./base.css">
-    <link rel="stylesheet" href="./style.css">
+    <!-- css file -->
+    <link rel="stylesheet" href="./view/style/base.css">
+    <link rel="stylesheet" href="./view/style/style.css">
+    <!-- boostrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <title>station list</title>
-    <!-- important! google CDN -->
+    <!-- ajax-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> 
-    <script src="./controlFan.js"> </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-    
+    <!-- data table link boostrap -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://code.jquery.com/jquery-3.5.1.js">
+    <script defer src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script defer src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script defer src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script>    
+        $(document).ready(function () {
+            $('#example').DataTable({
+                search: {
+                    return: true,
+                },
+            });
+        });
+    </script>
 </head>
-<body onload="clearAllInterval(); humidInterval = setInterval(updateSensorData, 1000, 'temp')">
+<body>
     <div class="container-fluid">
         <div class="row mw-100">
             <!-- vertical navbar -->
@@ -95,108 +109,169 @@
                     <br>
                 </div>
                 <!-- page content -->
-                <!-- begin: station list table -->
-                <table class="table table-striped table-hover">
+                <button type="button" data-bs-toggle="modal" data-bs-target="#addModal" class="btn btn-sm btn-primary mb-3">Thêm trạm mới</button> 
+                <!-- begin: data table -->
+                <table id="example" class="table table-striped mt-5" style="width:100%">
                     <thead>
-                      <tr>         
-                        <th scope="col">ID </th>
-                        <th scope="col">Tên trạm</th>
-                        <th scope="col">Địa chỉ</th>
-                        <th scope="col">Tổng doanh thu</th>
-                        <th scope="col">Tác vụ</th>
-                      </tr>
+                        <tr>
+                            <th scope="col">ID </th>
+                            <th scope="col">Tên trạm</th>
+                            <th scope="col">Địa chỉ</th>
+                            <th scope="col">Tổng doanh thu</th>
+                            <th scope="col">Tác vụ</th>
+                        </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th scope="row">001</th>
-                        <td>
-                            <a href="station_detail.html" class="link-dark" style="text-decoration: none;">Bách Khoa</a>
-                        </td>
-                        <td>128 Đ. Tạ Quang Bửu</td>
-                        <td>500.000</td>
-                        <td>
-                            <button type="button" onclick="location.href='enviroment.html'" class="btn btn-sm btn-info">Môi trường</button>
-                            <button type="button" class="btn btn-sm btn-primary">Sửa</button>
-                            <button type="button" class="btn btn-sm btn-danger">Xóa</button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">002</th>
-                        <td>Khoa học tự nhiên</td>
-                        <td>227 Đ. Nguyễn Văn Cừ</td>
-                        <td>100.000</td>
-                        <td>
-                            <button type="button" onclick="location.href='enviroment.html'" class="btn btn-sm btn-info">Môi trường</button>
-                            <button type="button" class="btn btn-sm btn-primary">Sửa</button>
-                            <button type="button" class="btn btn-sm btn-danger">Xóa</button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">003</th>
-                        <td>Nhân văn</td>
-                        <td>12 Đ. Đinh Tiên Hoàng</td>
-                        <td>150.000</td>
-                        <td>
-                            <button type="button" onclick="location.href='enviroment.html'" class="btn btn-sm btn-info">Môi trường</button>
-                            <button type="button" class="btn btn-sm btn-primary">Sửa</button>
-                            <button type="button" class="btn btn-sm btn-danger">Xóa</button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">004</th>
-                        <td>Quốc tế</td>
-                        <td>234 Đ. Pasteur</td>
-                        <td>200.000</td>
-                        <td>
-                            <button type="button" onclick="location.href='enviroment.html'" class="btn btn-sm btn-info">Môi trường</button>
-                            <button type="button" class="btn btn-sm btn-primary">Sửa</button>
-                            <button type="button" class="btn btn-sm btn-danger">Xóa</button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">005</th>
-                        <td>Kinh tế luật</td>
-                        <td>Số 669 Quốc lộ 1</td>
-                        <td>200.000</td>
-                        <td>
-                            <button type="button" onclick="location.href='enviroment.html'" class="btn btn-sm btn-info">Môi trường</button>
-                            <button type="button" class="btn btn-sm btn-primary">Sửa</button>
-                            <button type="button" class="btn btn-sm btn-danger">Xóa</button>
-                        </td>
-                      </tr>
-                    </tbody>
+                        <tr>
+                            <th scope="row">002</th>
+                            <td>Khoa học tự nhiên</td>
+                            <td>227 Đ. Nguyễn Văn Cừ</td>
+                            <td>100.000</td>
+                            <td>
+                                <button type="button" onclick="location.href='enviroment.html'" class="btn btn-sm btn-info">Môi trường</button>
+                                <button type="button" data-bs-toggle="modal" data-bs-target="#editModal" class="btn btn-sm btn-primary ">Sửa</button>
+                                <button type="button" data-bs-toggle="modal" data-bs-target="#deleteModal" class="btn btn-sm btn-danger">Xóa</button>
+                            </td>
+                        </tr>
                 </table>
-                <button type="button" class="btn btn-sm btn-primary">Thêm trạm mới</button>
-                <!-- end: station list table -->
-
-                <!-- begin:pagination -->
-                <nav aria-label="Page navigation ">
-                    <ul class="pagination d-flex justify-content-end">
-                      <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                          <span aria-hidden="true">&laquo;</span>
-                          
-                        </a>
-                      </li>
-                      <li class="page-item"><a class="page-link active" href="#">1</a></li>
-                      <li class="page-item"><a class="page-link" href="#">2</a></li>
-                      <li class="page-item"><a class="page-link" href="#">3</a></li>
-                      <li class="page-item"><a class="page-link" href="#">4</a></li>
-                      <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                          <span aria-hidden="true">&raquo;</span>
-                          
-                        </a>
-                      </li>
-                    </ul>
-                </nav>
-                <!-- end:pagination -->
-                
-                
+                <!-- end: data table -->
+                      
             </div>
             <!-- end: content -->
         </div>
     </div>
-    
+
+    <!--begin: add modal -->
+    <div class="modal fade" id="addModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Thêm trạm mới</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="POST">
+                    <!-- station ID -->
+                    <div class="form-group">
+                        <label for="stationID">ID</label>
+                        <input type="text" class="form-control" id="stationID" name="stationID" placeholder="Nhập ID">
+                    </div>
+                    <!-- station name -->
+                    <div class="form-group">
+                        <label for="stationName">Tên trạm</label>
+                        <input type="text" class="form-control" id="stationName" name="stationName" placeholder="Nhập tên trạm">
+                    </div>
+                    <!-- station address -->
+                    <div class="form-group">
+                        <label for="stationAddress">Địa chỉ</label>
+                        <input type="text" class="form-control" id="stationAddress" name="stationAddress" placeholder="Nhập địa chỉ trạm">
+                    </div>
+                    <!-- station capacity -->
+                    <div class="form-group">
+                        <label for="stationCapacity">Sức chứa</label>
+                        <input type="text" class="form-control" id="stationCapacity" name="stationCapacity" placeholder="Nhập sức chứa trạm">
+                    </div>
+                    <!-- station num of bikes -->
+                    <div class="form-group">
+                        <label for="stationNumOfBikes">Số xe trong trạm</label>
+                        <input type="text" class="form-control" id="stationNumOfBikes" name="stationNumOfBikes" placeholder="Nhập số xe trong trạm">
+                    </div>
+                    <!-- station status -->
+                    <div class="form-group">
+                        <label for="stationStatus">Trạng thái</label>
+                        <input type="text" class="form-control" id="stationStatus" name="stationStatus" placeholder="Nhập số xe trong trạm">
+                    </div> 
+
+                    <!-- station started day -->
+                    <div class="form-group">
+                        <label for="stationStartedDay">Ngày đi vào hoạt động</label>
+                        <input type="text" class="form-control" id="stationStartedDay" name="stationStartedDay" placeholder="Nhập ngày đi vào hoạt động của trạm">
+                    </div>                      
+                    
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Hủy</button>
+                <button type="button" class="btn btn-primary">Xác nhận thêm</button>
+            </div>
+            </div>
+        </div>
+    </div>
+    <!--end: add modal -->
+
+    <!-- begin: delete modal -->
+    <div class="modal fade" id="deleteModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">Xác nhận xóa?</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Quay lại</button>
+              <button type="button" class="btn btn-danger">Xác nhận</button>
+            </div>
+          </div>
+        </div>
+    </div>
+    <!-- end: delete modal -->
+
+    <!-- begin: edit modal -->
+    <div class="modal fade" id="editModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Chỉnh sửa thông tin trạm</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="POST">
+                    <!-- station ID -->
+                    <div class="form-group">
+                        <label for="stationID">ID</label>
+                        <input type="text" class="form-control" id="stationID" name="stationID" placeholder="Nhập ID">
+                    </div>
+                    <!-- station name -->
+                    <div class="form-group">
+                        <label for="stationName">Tên trạm</label>
+                        <input type="text" class="form-control" id="stationName" name="stationName" placeholder="Nhập tên trạm">
+                    </div>
+                    <!-- station address -->
+                    <div class="form-group">
+                        <label for="stationAddress">Địa chỉ</label>
+                        <input type="text" class="form-control" id="stationAddress" name="stationAddress" placeholder="Nhập địa chỉ trạm">
+                    </div>
+                    <!-- station capacity -->
+                    <div class="form-group">
+                        <label for="stationCapacity">Sức chứa</label>
+                        <input type="text" class="form-control" id="stationCapacity" name="stationCapacity" placeholder="Nhập sức chứa trạm">
+                    </div>
+                    <!-- station num of bikes -->
+                    <div class="form-group">
+                        <label for="stationNumOfBikes">Số xe trong trạm</label>
+                        <input type="text" class="form-control" id="stationNumOfBikes" name="stationNumOfBikes" placeholder="Nhập số xe trong trạm">
+                    </div>
+                    <!-- station status -->
+                    <div class="form-group">
+                        <label for="stationStatus">Trạng thái</label>
+                        <input type="text" class="form-control" id="stationStatus" name="stationStatus" placeholder="Nhập số xe trong trạm">
+                    </div> 
+
+                    <!-- station started day -->
+                    <div class="form-group">
+                        <label for="stationStartedDay">Ngày đi vào hoạt động</label>
+                        <input type="text" class="form-control" id="stationStartedDay" name="stationStartedDay" placeholder="Nhập ngày đi vào hoạt động của trạm">
+                    </div>                      
+                    
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Quay lại</button>
+                <button type="button" class="btn btn-primary">Xác nhận</button>
+            </div>
+            </div>
+        </div>
+    </div>
+    <!-- end: edit modal -->
 </body>
 </html>
