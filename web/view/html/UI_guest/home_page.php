@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="view\style\style.css">
+    <link rel="stylesheet" href="view\style\base.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <title>Homepage</title>
@@ -16,13 +16,42 @@
         <div class="col-3 vh-100 nopadding d-flex flex-column align-items-center sticky-top">
             <!-- begin: logo -->
             <br>
-            <img src="./assets/img/project-logo.png" alt="" class="project-logo" 
+            <img src="assets\img\project-logo.png" alt="" class="project-logo" 
             style="width: 100px; height: 100px;"><br>   
             <!-- end:logo -->
             <h6>Đăng nhập với tư cách quản trị viên</h6><br>
-            <form action="" class="d-flex flex-column">
-                <input type="text" placeholder="Username" name="username" class="margin-bot-20">
+            <form action="index.php?controller=manager&action=login" class="d-flex flex-column" method='post'>
+                <input type="text" placeholder="ID" name="id" class="margin-bot-20">
+                <p class='text-danger'>
+                    <?php
+                        if (isset($loginErr)) {
+                            switch ($loginErr) {
+                                case 'invalid id':
+                                    echo 'ID chưa được đăng ký!';
+                                    break;
+                                case 'not manager':
+                                    echo "ID tài khoản không phải của quản trị viên";
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                    ?>
+                </p>
                 <input type="password" placeholder="Password" name="password" class="margin-bot-20">
+                <p class='text-danger'>
+                    <?php
+                        if (isset($loginErr)) {
+                            switch ($loginErr) {
+                                case 'wrong password':
+                                    echo 'Mật khẩu không chính xác!';
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                    ?>
+                </p>
                 <input type="submit" class="btn btn-sm btn-outline-success">
             </form>
         </div>

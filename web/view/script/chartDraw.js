@@ -16,7 +16,7 @@ function getDateTime(str){
     return str.substring(11, 16) + '\n' + str.substring(5, 10)
 }
 
-var AIO_key = 'aio_KTNo676m6rSv6BVYZD2l2EqlwGzV';
+var AIO_key = 'aio_Brny03OLPDzcNaBZeQZ43kaNow7A';
 
 function updateSensorData(sensor) {
     var sensorData = []
@@ -65,11 +65,12 @@ function updateChart() {
         });
 }
 
-var humidButtonElement = document.querySelector("#humidButton")
-var tempButtonElement = document.getElementById('tempButton')
+
 
 function humidProcess() {
     clearAllInterval()
+    var humidButtonElement = document.querySelector("#humidButton")
+    var tempButtonElement = document.getElementById('tempButton')
     humidInterval = setInterval(updateSensorData, 1000, 'humid')
     humidButtonElement.className = 'btn btn-success'
 
@@ -78,6 +79,8 @@ function humidProcess() {
 
 function tempProcess() {
     clearAllInterval()
+    var humidButtonElement = document.querySelector("#humidButton")
+    var tempButtonElement = document.getElementById('tempButton')
     humidInterval = setInterval(updateSensorData, 1000, 'temp')
     humidButtonElement.className = 'btn btn-outline-success'
     tempButtonElement.className = 'btn btn-success'
