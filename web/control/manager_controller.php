@@ -23,5 +23,36 @@
         function revenue() {
             $this->render("view/html/UI_manager/revenue");
         }
+
+        function login(){
+            //login to manager account
+            include('model\manager_db.php');
+            
+            $loginErr = checkLogin($_POST['id'], $_POST['password']);
+            if ($loginErr == 'good') {
+                session_start();
+                $_SESSION['id'] = $_POST['id'];
+                $_SESSION['role'] = 'manager';
+                header('Location: index.php?controller=manager&action=home_page_manager');
+            }
+            else  {
+                $data = array ('loginErr' => $loginErr);
+                $this->render('view\html\UI_guest\home_page', $data);
+            }
+            
+            
+        }
+
+        function logout() {
+            //logout
+            session_start();
+            session_destroy();
+            header("Location: index.php?controller=guest&action=home_page");
+
+        }
+
+        function environment() {
+            $this->render("view/html/UI_manager/enviroment");
+        }
     }
 ?>
