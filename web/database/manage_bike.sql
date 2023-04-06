@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 03, 2023 at 05:03 PM
+-- Generation Time: Apr 06, 2023 at 04:13 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -205,19 +205,21 @@ CREATE TABLE `station` (
   `num_of_bikes` int(11) NOT NULL,
   `address` varchar(50) NOT NULL,
   `revenue` int(11) DEFAULT NULL,
-  `status` enum('working','maintaining','closed') DEFAULT NULL
+  `status` enum('working','maintaining','closed') DEFAULT NULL,
+  `longtitude` varchar(20) NOT NULL DEFAULT '0',
+  `latitude` varchar(20) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `station`
 --
 
-INSERT INTO `station` (`id`, `name`, `started_date`, `capacity`, `num_of_bikes`, `address`, `revenue`, `status`) VALUES
-('001', 'Tram Bach Khoa', '2023-01-01', 20, 20, 'Dai hoc Bach khoa CS2', 30000000, 'maintaining'),
-('002', 'Tram Suoi Tien', '2023-01-01', 25, 25, 'Cong vien van hoa Suoi Tien', 30000000, 'working'),
-('003', 'Tram KTX', '2023-01-01', 30, 20, 'KTX khu B DHQG TPHCM', 30000000, 'closed'),
-('004', 'Tram ben xe mien Dong', '2023-01-01', 35, 30, 'Ben xe mien Dong moi', 30000000, 'closed'),
-('005', 'Tram Vincom', '2023-01-01', 30, 30, 'Vincom Mega Mall', 30000000, 'working');
+INSERT INTO `station` (`id`, `name`, `started_date`, `capacity`, `num_of_bikes`, `address`, `revenue`, `status`, `longtitude`, `latitude`) VALUES
+('001', 'Tram Bach Khoa', '2023-01-01', 20, 20, 'Dai hoc Bach khoa CS2', 30000000, 'maintaining', '0', '0'),
+('002', 'Tram Suoi Tien', '2023-01-01', 25, 25, 'Cong vien van hoa Suoi Tien', 30000000, 'working', '0', '0'),
+('003', 'Tram KTX', '2023-01-01', 30, 20, 'KTX khu B DHQG TPHCM', 30000000, 'closed', '0', '0'),
+('004', 'Tram ben xe mien Dong', '2023-01-01', 35, 30, 'Ben xe mien Dong moi', 30000000, 'closed', '0', '0'),
+('005', 'Tram Vincom', '2023-01-01', 30, 30, 'Vincom Mega Mall', 30000000, 'working', '0', '0');
 
 -- --------------------------------------------------------
 
