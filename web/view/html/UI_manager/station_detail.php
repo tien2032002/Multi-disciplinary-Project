@@ -3,6 +3,7 @@
     $bikeList = json_decode($bikeList);
 ?>
 <!-- start: breadcrum -->
+<div class="h1">Trạm Bách Khoa</div>
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item">

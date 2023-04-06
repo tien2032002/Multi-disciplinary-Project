@@ -28,9 +28,9 @@
         foreach($stationList as $station) {
             $station = json_decode($station);
             echo '
-           <tr style="cursor: pointer" onclick="getMainContent(\'index.php?controller=manager&action=station_detail&stationID='.$station->id.'\')">
+           <t>
                 <th scope="row">'.$station->id.'</th>
-                <td>'.$station->name.'</td>
+                <td  style="cursor: pointer" onclick="getMainContent(\'index.php?controller=manager&action=station_detail&stationID='.$station->id.'\')">'.$station->name.'</td>
                 <td>'.$station->address.'</td>
                 <td>'.$station->revenue.'</td>
                 <td>
@@ -89,12 +89,12 @@
                                 <!-- station capacity -->
                                 <div class="form-group">
                                     <label for="stationCapacity">Sức chứa</label>
-                                    <input type="text" class="form-control" id="stationCapacity" name="stationCapacity" placeholder="Nhập sức chứa trạm" value="'.$station->capacity.'">
+                                    <input type="number" class="form-control" id="stationCapacity" name="stationCapacity" placeholder="Nhập sức chứa trạm" value="'.$station->capacity.'">
                                 </div>
                                 <!-- station num of bikes -->
                                 <div class="form-group">
                                     <label for="stationNumOfBikes">Số xe trong trạm</label>
-                                    <input type="text" class="form-control" id="stationNumOfBikes" name="stationNumOfBikes" placeholder="Nhập số xe trong trạm" value="'.$station->num_of_bikes.'">
+                                    <input type="number" class="form-control" id="stationNumOfBikes" name="stationNumOfBikes" placeholder="Nhập số xe trong trạm" value="'.$station->num_of_bikes.'">
                                 </div>
                                 <!-- station status -->
                                 <div class="form-group">
@@ -105,7 +105,7 @@
                                 <!-- station started day -->
                                 <div class="form-group">
                                     <label for="stationStartedDay">Ngày đi vào hoạt động</label>
-                                    <input type="text" class="form-control" id="stationStartedDay" name="stationStartedDay" placeholder="Nhập ngày đi vào hoạt động của trạm" value="'.$station->started_date.'">
+                                    <input type="date" class="form-control" id="stationStartedDay" name="stationStartedDay" placeholder="Nhập ngày đi vào hoạt động của trạm" value="'.$station->started_date.'">
                                 </div>                      
                                 
                             </form>
