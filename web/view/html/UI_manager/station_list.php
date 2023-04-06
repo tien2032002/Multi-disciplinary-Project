@@ -28,7 +28,7 @@
         foreach($stationList as $station) {
             $station = json_decode($station);
             echo '
-            <tr>
+           <tr style="cursor: pointer" onclick="getMainContent(\'index.php?controller=manager&action=station_detail&stationID='.$station->id.'\')">
                 <th scope="row">'.$station->id.'</th>
                 <td>'.$station->name.'</td>
                 <td>'.$station->address.'</td>
@@ -54,7 +54,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Quay lại</button>
-                            <button type="button" class="btn btn-danger">Xác nhận</button>
+                            <a href="index.php?controller=manager&action=delete_station&stationID='.$station->id.'"><button type="button" class="btn btn-danger">Xác nhận</button></a>
                         </div>
                         </div>
                     </div>
@@ -70,42 +70,42 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form action="POST">
+                            <form action="index.php?controller=manager&action=update_station&curStationID='.$station->id.'" method="post">
                                 <!-- station ID -->
                                 <div class="form-group">
                                     <label for="stationID">ID</label>
-                                    <input type="text" class="form-control" id="stationID" name="stationID" placeholder="Nhập ID">
+                                    <input type="text" class="form-control" id="stationID" name="stationID" placeholder="Nhập ID" value="'.$station->id.'">
                                 </div>
                                 <!-- station name -->
                                 <div class="form-group">
                                     <label for="stationName">Tên trạm</label>
-                                    <input type="text" class="form-control" id="stationName" name="stationName" placeholder="Nhập tên trạm">
+                                    <input type="text" class="form-control" id="stationName" name="stationName" placeholder="Nhập tên trạm" value="'.$station->name.'">
                                 </div>
                                 <!-- station address -->
                                 <div class="form-group">
                                     <label for="stationAddress">Địa chỉ</label>
-                                    <input type="text" class="form-control" id="stationAddress" name="stationAddress" placeholder="Nhập địa chỉ trạm">
+                                    <input type="text" class="form-control" id="stationAddress" name="stationAddress" placeholder="Nhập địa chỉ trạm" value="'.$station->address.'">
                                 </div>
                                 <!-- station capacity -->
                                 <div class="form-group">
                                     <label for="stationCapacity">Sức chứa</label>
-                                    <input type="text" class="form-control" id="stationCapacity" name="stationCapacity" placeholder="Nhập sức chứa trạm">
+                                    <input type="text" class="form-control" id="stationCapacity" name="stationCapacity" placeholder="Nhập sức chứa trạm" value="'.$station->capacity.'">
                                 </div>
                                 <!-- station num of bikes -->
                                 <div class="form-group">
                                     <label for="stationNumOfBikes">Số xe trong trạm</label>
-                                    <input type="text" class="form-control" id="stationNumOfBikes" name="stationNumOfBikes" placeholder="Nhập số xe trong trạm">
+                                    <input type="text" class="form-control" id="stationNumOfBikes" name="stationNumOfBikes" placeholder="Nhập số xe trong trạm" value="'.$station->num_of_bikes.'">
                                 </div>
                                 <!-- station status -->
                                 <div class="form-group">
                                     <label for="stationStatus">Trạng thái</label>
-                                    <input type="text" class="form-control" id="stationStatus" name="stationStatus" placeholder="Nhập số xe trong trạm">
+                                    <input type="text" class="form-control" id="stationStatus" name="stationStatus" placeholder="Nhập số xe trong trạm" value="'.$station->status.'">
                                 </div> 
 
                                 <!-- station started day -->
                                 <div class="form-group">
                                     <label for="stationStartedDay">Ngày đi vào hoạt động</label>
-                                    <input type="text" class="form-control" id="stationStartedDay" name="stationStartedDay" placeholder="Nhập ngày đi vào hoạt động của trạm">
+                                    <input type="text" class="form-control" id="stationStartedDay" name="stationStartedDay" placeholder="Nhập ngày đi vào hoạt động của trạm" value="'.$station->started_date.'">
                                 </div>                      
                                 
                             </form>
