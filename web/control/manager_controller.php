@@ -54,5 +54,9 @@
         function environment() {
             $this->render("view/html/UI_manager/enviroment");
         }
+
+        function user_webpage() {
+            $this->render("view\html\UI_manager\user_webpage");
+        }
     }
 ?>
