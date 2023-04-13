@@ -1,0 +1,23 @@
+# Turn on URL rewriting
+RewriteEngine On
+
+#rewrite
+RewriteBase /
+
+# Allow any files or directories that exist to be displayed directly
+RewriteCond %{REQUEST_FILENAME} -s [OR]
+RewriteCond %{REQUEST_FILENAME} -l [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^.*$ - [L]
+
+RewriteRule ^guest/(.+) index.php?controller=guest&action=$1 [NC,L]
+
+RewriteRule ^manager/(.+) index.php?controller=manager&action=$1 [NC,L]
+
+RewriteRule ^station-detail/(.*)/([0-9]*) index/php?action=station_detail&stationID=$2&stationName=$1
+
+RewriteRule ^bike-detail/(.*)/([0-9]*) index/php?action=bike_detail&bikeID=$2&bikeName=$1
+
+RewriteRule ^(.*)$ index.php?action=$1 [NC,L,QSA]
+
+

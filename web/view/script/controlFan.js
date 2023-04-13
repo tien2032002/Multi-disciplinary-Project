@@ -1,3 +1,6 @@
+//AIO key
+AIO_key = 'aio_Dgbq82ICs1tJjZdgrnK2yyuhNPZh'
+
 //functions to change mode of fan
 
 function changeModeToOn(){
@@ -9,7 +12,7 @@ function changeModeToOn(){
         headers:{
             'Content-Type':'application/json',
             //remember to check key because they can be changed
-            'X-AIO-Key': 'aio_erVJ72Cn6lHehHh0OlqkKEtgyhT3'
+            'X-AIO-Key': AIO_key
         },
         data:JSON.stringify({"value":"1"}),
         processData:false,
@@ -33,7 +36,7 @@ function changeModeToOff(){
         type:'POST',
         headers:{
             'Content-Type':'application/json',
-            'X-AIO-Key':'aio_erVJ72Cn6lHehHh0OlqkKEtgyhT3'
+            'X-AIO-Key': AIO_key
         },
         data:JSON.stringify({"value":"0"}),
         processData:false,
@@ -55,7 +58,7 @@ function changeFanMode(){
         type:'GET',
         headers:{
             'Content-Type':'application/json',
-            'X-AIO-Key':'aio_erVJ72Cn6lHehHh0OlqkKEtgyhT3'
+            'X-AIO-Key': AIO_key
         },
         data:{get_param: 'value'},
         success: function (data){
@@ -92,7 +95,7 @@ function changeFanSpeed(value){
         type:'POST',
         headers:{
             'Content-Type':'application/json',
-            'X-AIO-Key':'aio_erVJ72Cn6lHehHh0OlqkKEtgyhT3'
+            'X-AIO-Key': AIO_key
         },
         data:JSON.stringify({"value":value}),
         processData:false,
