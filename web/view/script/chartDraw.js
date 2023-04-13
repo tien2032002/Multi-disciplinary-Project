@@ -16,7 +16,7 @@ function getDateTime(str){
     return str.substring(11, 16) + '\n' + str.substring(5, 10)
 }
 
-var AIO_key = 'aio_WnIO72F02QSezmglnRMPAr0ATgis';
+var AIO_key = 'aio_Dgbq82ICs1tJjZdgrnK2yyuhNPZh';
 
 function updateSensorData(sensor) {
     var sensorData = []

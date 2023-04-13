@@ -1,6 +1,14 @@
 <?php
     //manage station data
 
+    function getStationName($id) {
+        require('model/db.php');
+        $getStation = "SELECT * FROM station WHERE id = '$id'";
+        $resultStation = mysqli_query($con, $getStation);
+        if (mysqli_num_rows($resultStation) == 0) return 'invalid id';
+        return $resultStation->fetch_object()->name;
+    }
+
     function getStationList() {
         //this function will return json code of station list object array
         require('model/db.php');
@@ -15,7 +23,7 @@
 
     function getStationInfo($stationID) {
         //this function will return json code of station object according to station ID
-        $getStation = "SELECT * FROM station WHERE id == '$stationID'";
+        $getStation = "SELECT * FROM station WHERE id = '$stationID'";
         $resultStation = mysqli_query($con, $getList);
         return json_encode($resultStation->fetch_object());
     }

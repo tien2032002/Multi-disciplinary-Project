@@ -4,27 +4,30 @@
         //display home page UI for guest
         function station_list() {
             include("model\station_db.php");
-            session_start();
+            if (!isset($_SESSION)) session_start();
             if (isset($_SESSION['id']) && isset($_SESSION['role']) && $_SESSION['role'] == 'manager'){
                 $data = array("stationList" => getStationList());
                 $this->render("view\html\UI_manager\station_list", $data);
             }
-            else header("Location: index.php?controller=guest&action=home_page");
+            else header("Location: home_page");
         }
         
         function home_page_manager() {
-            session_start();
+            if (!isset($_SESSION)) session_start();
             if (isset($_SESSION['id']) && isset($_SESSION['role']) && $_SESSION['role'] == 'manager')
-                header("Location: index.php?controller=manager&action=station_list");
-            else header("Location: index.php?controller=guest&action=home_page");
+                header("Location: /station_list");
+            else header("Location: /guest/home_page");
         }
 
         function station_detail() {
             include("model\bike_db.php");
-            session_start();
+            include('model/station_db.php');
+            if (!isset($_SESSION)) session_start();
             if (isset($_SESSION['id']) && isset($_SESSION['role']) && $_SESSION['role'] == 'manager'){
-                //get bike list
-                $data = array("bikeList" => getBikeList($_GET['stationID']));
+                $data = array('bikeList' => getBikeList($_GET['stationID']),
+                              'stationName' => getStationName($_GET['stationID']));
+                $_SESSION['currStationName'] = getStationName($_GET['stationID']);
+                $_SESSION['currStationID'] = $_GET['stationID'];
                 //render view
                 $this->render("view\html\UI_manager\station_detail", $data);
             }
@@ -35,26 +38,9 @@
             $this->render("view/html/UI_manager/revenue");
         }
 
-        function login(){
-            //login to manager account
-            include('model\manager_db.php');
-            
-            $loginErr = checkLogin($_POST['id'], $_POST['password']);
-            if ($loginErr == 'good') {
-                session_start();
-                $_SESSION['id'] = $_POST['id'];
-                $_SESSION['role'] = 'manager';
-                header('Location: index.php?controller=manager&action=home_page_manager');
-            }
-            else  {
-                $data = array ('loginErr' => $loginErr);
-                $this->render('view\html\UI_guest\home_page', $data);
-            }
-        }
-
         function logout() {
             //logout
-            session_start();
+            if (!isset($_SESSION)) session_start();
             session_destroy();
             header("Location: index.php?controller=guest&action=home_page");
 
@@ -70,7 +56,7 @@
 
         function addStation() {
             include('model\station_db.php');
-            session_start();
+            if (!isset($_SESSION)) session_start();
             if (isset($_SESSION['id']) && isset($_SESSION['role']) && $_SESSION['role'] == 'manager'){
                 $checkAddStation = checkAddStation($_POST['stationID'], $_POST['stationName'], $_POST['stationStartedDay'],
                                                 $_POST['stationCapacity'], $_POST['stationNumOfBikes'], $_POST['stationAddress'],
@@ -92,7 +78,7 @@
 
         function updateStation() {
             include('model\station_db.php');
-            session_start();
+            if (!isset($_SESSION)) session_start();
             if (isset($_SESSION['id']) && isset($_SESSION['role']) && $_SESSION['role'] == 'manager'){
                 $checkUpdateStation = checkUpdateStation($_GET['curStationID'], $_POST['stationID'], $_POST['stationName'], $_POST['stationStartedDay'],
                                                 $_POST['stationCapacity'], $_POST['stationNumOfBikes'], $_POST['stationAddress'],
@@ -111,6 +97,21 @@
                     $this->render("view\html\UI_manager\station_list", $data);
                 }
             }
+        }
+
+        function bike_detail() {
+            include('model\bike_db.php');
+            if (!isset($_SESSION)) session_start();
+            $bikeObj = getBike($_GET['bikeID']);
+            if ($bikeObj == 'invalid id') {
+                echo 'wrong id';
+                exit;
+            }
+            else {
+                $data = array('bikeObj' => $bikeObj);
+                $this->render('view\html\UI_manager\bike_detail', $data);
+            }
+
         }
     }
 ?>

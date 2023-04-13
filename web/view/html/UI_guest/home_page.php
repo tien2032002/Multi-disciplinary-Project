@@ -20,7 +20,7 @@
             style="width: 100px; height: 100px;"><br>   
             <!-- end:logo -->
             <h6>Đăng nhập với tư cách quản trị viên</h6><br>
-            <form action="index.php?controller=manager&action=login" class="d-flex flex-column" method='post'>
+            <form action="/login" class="d-flex flex-column" method='post'>
                 <input type="text" placeholder="ID" name="id" class="margin-bot-20">
                 <p class='text-danger'>
                     <?php

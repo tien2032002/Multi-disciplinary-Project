@@ -30,6 +30,9 @@
     </script>
 </head>
 <body>
+    <?php
+        $bikeList = json_decode($bikeList);
+    ?>
     <div class="container-fluid">
         <div class="row mw-100">
             <!-- vertical navbar -->
@@ -54,14 +57,14 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person text-white" viewBox="0 0 16 16">
                             <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/>
                         </svg>
-                        <a class="nav-link active text-white nopadding" href="index.php?controller=manager&action=user_webpage">Quản lý nhân viên</a>
+                        <a class="nav-link active text-white nopadding" href="/user_webpage">Quản lý nhân viên</a>
                     </li>
                     <li class="nav-item d-flex align-items-center selected" id='stationList'>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-list text-white" viewBox="0 0 16 16">
                             <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
                             <path d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zM4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"/>
                         </svg>
-                        <a class="nav-link active text-white nopadding " href="index.php?controller=manager&action=station_list">Danh sách trạm</a>
+                        <a class="nav-link active text-white nopadding " href="/station_list">Danh sách trạm</a>
                     </li>
                     <li class="nav-item d-flex align-items-center" style="cursor: pointer;">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell text-white" viewBox="0 0 16 16">
@@ -74,14 +77,14 @@
                             <path d="M5 12.5a1.5 1.5 0 1 1-2-1.415V2.5a.5.5 0 0 1 1 0v8.585A1.5 1.5 0 0 1 5 12.5z"/>
                             <path d="M1 2.5a2.5 2.5 0 0 1 5 0v7.55a3.5 3.5 0 1 1-5 0V2.5zM3.5 1A1.5 1.5 0 0 0 2 2.5v7.987l-.167.15a2.5 2.5 0 1 0 3.333 0L5 10.486V2.5A1.5 1.5 0 0 0 3.5 1zm5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1a.5.5 0 0 1 .5-.5zm4.243 1.757a.5.5 0 0 1 0 .707l-.707.708a.5.5 0 1 1-.708-.708l.708-.707a.5.5 0 0 1 .707 0zM8 5.5a.5.5 0 0 1 .5-.5 3 3 0 1 1 0 6 .5.5 0 0 1 0-1 2 2 0 0 0 0-4 .5.5 0 0 1-.5-.5zM12.5 8a.5.5 0 0 1 .5-.5h1a.5.5 0 1 1 0 1h-1a.5.5 0 0 1-.5-.5zm-1.172 2.828a.5.5 0 0 1 .708 0l.707.708a.5.5 0 0 1-.707.707l-.708-.707a.5.5 0 0 1 0-.708zM8.5 12a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1a.5.5 0 0 1 .5-.5z"/>
                         </svg>
-                        <a class="nav-link active text-white nopadding" href="index.php?controller=manager&action=environment">Tình trạng môi trường</a>
+                        <a class="nav-link active text-white nopadding" href="/environment">Tình trạng môi trường</a>
                     </li>
                     <li class="nav-item d-flex align-items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-receipt text-white" viewBox="0 0 16 16">
                             <path d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z"/>
                             <path d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z"/>
                         </svg>
-                        <a class="nav-link active text-white nopadding" href="index.php?controller=manager&action=revenue">Doanh thu</a>
+                        <a class="nav-link active text-white nopadding" href="/revenue">Doanh thu</a>
                     </li>
                     <li class="nav-item d-flex align-items-center" style="cursor: pointer;">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear text-white" viewBox="0 0 16 16">
@@ -95,7 +98,7 @@
                             <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
                             <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
                         </svg>
-                        <a class="nav-link active text-white nopadding" href="index.php?controller=manager&action=logout">Đăng xuất</a>
+                        <a class="nav-link active text-white nopadding" href="/logout">Đăng xuất</a>
                     </li>
                     
                 </ul>
@@ -107,9 +110,9 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a class="link-dark" href="index.php?controller=manager&action=station_list">Danh sách trạm</a>
+                            <a class="link-dark" href="/station_list">Danh sách trạm</a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">Trạm Bách Khoa</li>
+                        <li class="breadcrumb-item active" aria-current="page"><?php echo $stationName; ?></li>
                     </ol>
                 </nav>
                 <!-- end: breadcrum -->
@@ -119,104 +122,41 @@
                 <table class="table table-striped table-hover" id="bikeTable">
                     <thead>
                       <tr>         
-                        <th scope="col">ID </th>
-                        <th scope="col">Tên xe</th>
-                        <th scope="col">Số lần thuê</th>
-                        <th scope="col">Giá thuê</th>
-                        <th scope="col">Tình trạng</th>
-                        <th scope="col">Tác vụ</th>
+                        <th class='text-center' scope="col">ID </th>
+                        <th class='text-center' scope="col">Tên xe</th>
+                        <th class='text-center' scope="col">Số giờ thuê</th>
+                        <th class='text-center' scope="col">Giá thuê</th>
+                        <th class='text-center' scope="col">Tình trạng</th>
+                        <th class='text-center' scope="col">Tác vụ</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th scope="row">101</th>
-                        <td>
-                            <a href="bike_detail.html" style="text-decoration: none;" class="link-dark">Xe đạp du lịch</a>
-                        </td>
-                        <td>10</td>
-                        <td>10.000/1h</td>
-                        <td>Bình thường</td>
-                        <td>
-                            
-                            <button type="button" class="btn btn-sm btn-primary">Sửa</button>
-                            <button type="button" class="btn btn-sm btn-danger">Xóa</button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">102</th>
-                        <td>Xe đạp leo núi</td>
-                        <td>12</td>
-                        <td>10.000/1h</td>
-                        <td>Bình thường</td>
-                        <td>
-                            
-                            <button type="button" class="btn btn-sm btn-primary">Sửa</button>
-                            <button type="button" class="btn btn-sm btn-danger">Xóa</button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">103</th>
-                        <td>Xe đạp ba bánh</td>
-                        <td>14</td>
-                        <td>10.000/1h</td>
-                        <td>Bình thường</td>
-                        <td>
-                            
-                            <button type="button" class="btn btn-sm btn-primary">Sửa</button>
-                            <button type="button" class="btn btn-sm btn-danger">Xóa</button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">104</th>
-                        <td>Xe đạp mini</td>
-                        <td>16</td>
-                        <td>10.000/1h</td>
-                        <td>Bình thường</td>
-                        <td>
-                            
-                            <button type="button" class="btn btn-sm btn-primary">Sửa</button>
-                            <button type="button" class="btn btn-sm btn-danger">Xóa</button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">105</th>
-                        <td>Xe đạp trợ lực điện</td>
-                        <td>18</td>
-                        <td>10.000/1h</td>
-                        <td>Hư bình điện</td>
-                        <td>
-                            
-                            <button type="button" class="btn btn-sm btn-primary">Sửa</button>
-                            <button type="button" class="btn btn-sm btn-danger">Xóa</button>
-                        </td>
-                      </tr>
+                        <?php
+                            foreach($bikeList as $bike) {
+                                $bike = json_decode($bike);
+                                echo '
+                                <tr class="text-center">
+                                    <th scope="row">'.$bike->id.'</th>
+                                    <td>
+                                        <a href="/bike-detail/'.UrlNormal($bike->name).'/'.$bike->id.'" style="text-decoration: none;" class="link-dark">'.$bike->name.'</a>
+                                    </td>
+                                    <td>'.$bike->hired_hours.'</td>
+                                    <td>'.$bike->price.'đ/1h</td>
+                                    <td>'.$bike->status.'</td>
+                                    <td>
+                                        <button type="button" class="btn btn-sm btn-primary">Sửa</button>
+                                        <button type="button" class="btn btn-sm btn-danger">Xóa</button>
+                                    </td>
+                                </tr>
+                                ';
+
+                            }
+                        ?>
+                        
                     </tbody>
                 </table>
                 <button type="button" class="btn btn-sm btn-primary">Thêm xe mới</button>
                 <!-- end: station list table -->
-
-                <!-- begin:pagination -->
-                <nav aria-label="Page navigation ">
-                    <ul class="pagination d-flex justify-content-end">
-                      <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                          <span aria-hidden="true">&laquo;</span>
-                          
-                        </a>
-                      </li>
-                      <li class="page-item"><a class="page-link active" href="#">1</a></li>
-                      <li class="page-item"><a class="page-link" href="#">2</a></li>
-                      <li class="page-item"><a class="page-link" href="#">3</a></li>
-                      <li class="page-item"><a class="page-link" href="#">4</a></li>
-                      <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                          <span aria-hidden="true">&raquo;</span>
-                          
-                        </a>
-                      </li>
-                    </ul>
-                </nav>
-                <!-- end:pagination -->
             </div>
             
             <!-- end: content -->
