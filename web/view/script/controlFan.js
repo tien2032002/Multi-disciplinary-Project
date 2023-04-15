@@ -17,7 +17,7 @@ function changeModeToOn(){
         data:JSON.stringify({"value":"1"}),
         processData:false,
         success:function(){
-            console.log("ON");
+            console.log("ON");//for debug purpose
         },
         error:function(jqxhr,textStatus,errorThrown){
             console.log(errorThrown);
@@ -41,7 +41,7 @@ function changeModeToOff(){
         data:JSON.stringify({"value":"0"}),
         processData:false,
         success:function(){
-            console.log("OFF");
+            console.log("OFF");//for debug purpose
         },
         error:function(jqxhr,textStatus,errorThrown){
             console.log(errorThrown);

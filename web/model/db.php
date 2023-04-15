@@ -4,7 +4,7 @@
 
     $username_db = "root";
     $password_db = "";
-    $dbName = "database";
+    $dbName = "test";
 
     $con = new mysqli($servername, $username_db, $password_db, $dbName = "test");
 

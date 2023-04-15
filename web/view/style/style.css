@@ -13,6 +13,7 @@
 
 .selected{
     background-color: var(--subordinate-color);
+    border-radius: 5px;
 }
 
 .margin-left-20{
