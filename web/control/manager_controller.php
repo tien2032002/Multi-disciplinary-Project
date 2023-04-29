@@ -113,5 +113,9 @@
             }
 
         }
+        
+        function delete_station() {
+            
+        }
     }
 ?>

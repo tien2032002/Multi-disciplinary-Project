@@ -44,6 +44,5 @@
         }
         
       }
-      
       require_once('route.php');
 ?>
