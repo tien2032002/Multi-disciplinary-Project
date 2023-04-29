@@ -16,7 +16,7 @@ function getDateTime(str){
     return str.substring(11, 16) + '\n' + str.substring(5, 10)
 }
 
-var AIO_key = 'aio_Brny03OLPDzcNaBZeQZ43kaNow7A';
+var AIO_key = 'aio_Dgbq82ICs1tJjZdgrnK2yyuhNPZh';
 
 function updateSensorData(sensor) {
     var sensorData = []
@@ -73,7 +73,7 @@ function humidProcess() {
     var tempButtonElement = document.getElementById('tempButton')
     humidInterval = setInterval(updateSensorData, 1000, 'humid')
     humidButtonElement.className = 'btn btn-success'
-
+    
     tempButtonElement.className = 'btn btn-outline-success'
 }
 

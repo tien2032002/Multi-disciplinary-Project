@@ -18,6 +18,7 @@
         require('model/db.php');
         $getBike = "SELECT * FROM bike WHERE id = '$bikeID'";
         $bikeResult = mysqli_query($con, $getBike);
+        if (mysqli_num_rows($bikeResult) == 0) return 'invalid id';
         return json_encode($bikeResult->fetch_object());
     }
 ?>

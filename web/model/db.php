@@ -4,9 +4,9 @@
 
     $username_db = "root";
     $password_db = "";
-    $dbName = "database";
+    $dbName = "bicyclegas";
 
-    $con = new mysqli($servername, $username_db, $password_db, $dbName = "test");
+    $con = new mysqli($servername, $username_db, $password_db, $dbName);
 
     if ($con -> connect_errno) {
         echo "Failed to connect to MySQL: " . $mysqli -> connect_error;

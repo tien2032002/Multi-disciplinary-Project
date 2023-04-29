@@ -21,4 +21,8 @@
         }
         return $loginErr;
     }
+
+    function getEmployeeList() {
+        //this function return json code of array employee
+    }
 ?>
