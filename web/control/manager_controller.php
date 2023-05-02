@@ -38,6 +38,10 @@
             $this->render("view/html/UI_manager/revenue");
         }
 
+        function station_webcam() {
+            $this->render("view/html/UI_manager/station_webcam");
+        }
+
         function logout() {
             //logout
             if (!isset($_SESSION)) session_start();

@@ -88,6 +88,13 @@
                                     </svg>
                                     <a class="nav-link active text-white nopadding" href="/environment">Tình trạng môi trường</a>
                                 </li>
+                                <li class="nav-item d-flex align-items-center" style="cursor: pointer;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-camera-fill" viewBox="0 0 16 16">
+                                        <path d="M10.5 8.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                                        <path d="M2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2zm.5 2a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm9 2.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0z"/>
+                                    </svg>
+                                    <a class="nav-link active text-white nopadding" href="/station_webcam">Theo dõi</a>
+                                </li>
                         </ul>
                     </li>
                     
@@ -126,9 +133,6 @@
                 <!-- page content -->
                 <!-- begin: station list table -->
                 <!-- begin: data table -->
-
-
-
                 <table id="example" class="table table-striped mt-5" style="width:100%">
                     <thead>
                         <tr>
@@ -140,7 +144,7 @@
                             <th scope="col">Số xe</th>
                             <th scope="col">Tổng doanh thu</th>
                             <th scope="col">Trạng thái</th>
-                            <th scope="col">Tác vụ</th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -150,35 +154,13 @@
                             echo '
                             <tr>
                                 <th scope="row">'.$station->id.'</th>
-                                <td  onclick="location.href=\'/station-detail/'.UrlNormal($station->name).'/'.$station->id.'\';" style="cursor:pointer;">'.$station->name.'</td>
+                                <td  data-bs-toggle="modal" data-bs-target="#operationModal" style="cursor:pointer;">'.$station->name.'</td>
                                 <td>'.$station->address.'</td>
                                 <td>'.$station->started_date.'</td>
                                 <td>'.$station->capacity.'</td>
                                 <td>'.$station->num_of_bikes.'</td>
                                 <td>'.$station->revenue.'</td>
                                 <td>'.$station->status.'</td>
-                                <td >
-                                    <button type="button" href="index.php?controller=manager&action=environment&stationID='.$station->id.'" class="btn btn-sm btn-info text-center mb-1 ps-3 pe-3">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-thermometer-sun m-0" viewBox="0 0 16 16">
-                                            <path d="M5 12.5a1.5 1.5 0 1 1-2-1.415V2.5a.5.5 0 0 1 1 0v8.585A1.5 1.5 0 0 1 5 12.5z"/>
-                                            <path d="M1 2.5a2.5 2.5 0 0 1 5 0v7.55a3.5 3.5 0 1 1-5 0V2.5zM3.5 1A1.5 1.5 0 0 0 2 2.5v7.987l-.167.15a2.5 2.5 0 1 0 3.333 0L5 10.486V2.5A1.5 1.5 0 0 0 3.5 1zm5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1a.5.5 0 0 1 .5-.5zm4.243 1.757a.5.5 0 0 1 0 .707l-.707.708a.5.5 0 1 1-.708-.708l.708-.707a.5.5 0 0 1 .707 0zM8 5.5a.5.5 0 0 1 .5-.5 3 3 0 1 1 0 6 .5.5 0 0 1 0-1 2 2 0 0 0 0-4 .5.5 0 0 1-.5-.5zM12.5 8a.5.5 0 0 1 .5-.5h1a.5.5 0 1 1 0 1h-1a.5.5 0 0 1-.5-.5zm-1.172 2.828a.5.5 0 0 1 .708 0l.707.708a.5.5 0 0 1-.707.707l-.708-.707a.5.5 0 0 1 0-.708zM8.5 12a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1a.5.5 0 0 1 .5-.5z"/>
-                                        </svg>
-                                        Môi trường
-                                    </button>
-                                    <button type="button" data-bs-toggle="modal" data-bs-target="#editModal'.$station->id.'" class="btn btn-sm btn-primary text-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear m-0" viewBox="0 0 16 16">
-                                            <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
-                                            <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"/>
-                                        </svg>
-                                        Sửa
-                                    </button>
-                                    <button type="button" data-bs-toggle="modal" data-bs-target="#deleteModal'.$station->id.'" class="btn btn-sm btn-danger">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3 m-0" viewBox="0 0 16 16">
-                                            <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
-                                        </svg>
-                                        Xóa
-                                    </button>
-                                </td>
                             </tr>
                             ';
 
@@ -329,128 +311,183 @@
                 </table>
                 <!-- end: data table -->
 
+                <!-- begin: operation modal -->
+                <div class="modal fade" id="operationModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <!-- header -->
+                            <div class="modal-header">
+                                Tác vụ
+                            </div>
+                            <!-- body -->
+                            <div class="modal-body">
+                                <button type="button" href="index.php?controller=manager&action=station_detail&stationID='.$station->id.'" class="btn btn-sm btn-success text-center ps-3 pe-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-list-task" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M2 2.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5V3a.5.5 0 0 0-.5-.5H2zM3 3H2v1h1V3z"/>
+                                        <path d="M5 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM5.5 7a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 4a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9z"/>
+                                        <path fill-rule="evenodd" d="M1.5 7a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5V7zM2 7h1v1H2V7zm0 3.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5H2zm1 .5H2v1h1v-1z"/>
+                                    </svg>
+                                    <small> Quản lí trạm </small>
+                                </button>
+                                <button type="button" href="index.php?controller=manager&action=environment&stationID='.$station->id.'" class="btn btn-sm btn-info text-center ps-3 pe-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-thermometer-sun m-0" viewBox="0 0 16 16">
+                                        <path d="M5 12.5a1.5 1.5 0 1 1-2-1.415V2.5a.5.5 0 0 1 1 0v8.585A1.5 1.5 0 0 1 5 12.5z"/>
+                                        <path d="M1 2.5a2.5 2.5 0 0 1 5 0v7.55a3.5 3.5 0 1 1-5 0V2.5zM3.5 1A1.5 1.5 0 0 0 2 2.5v7.987l-.167.15a2.5 2.5 0 1 0 3.333 0L5 10.486V2.5A1.5 1.5 0 0 0 3.5 1zm5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1a.5.5 0 0 1 .5-.5zm4.243 1.757a.5.5 0 0 1 0 .707l-.707.708a.5.5 0 1 1-.708-.708l.708-.707a.5.5 0 0 1 .707 0zM8 5.5a.5.5 0 0 1 .5-.5 3 3 0 1 1 0 6 .5.5 0 0 1 0-1 2 2 0 0 0 0-4 .5.5 0 0 1-.5-.5zM12.5 8a.5.5 0 0 1 .5-.5h1a.5.5 0 1 1 0 1h-1a.5.5 0 0 1-.5-.5zm-1.172 2.828a.5.5 0 0 1 .708 0l.707.708a.5.5 0 0 1-.707.707l-.708-.707a.5.5 0 0 1 0-.708zM8.5 12a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1a.5.5 0 0 1 .5-.5z"/>
+                                    </svg>
+                                    <small class="text-white">Nhiệt độ & độ ẩm </small>
+                                </button>
+                                <button onclick="openDeteleModal()" data-bs-dismiss="modal"  class=" btn btn-sm btn-dark" >
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-webcam-fill" viewBox="0 0 16 16">
+                                        <path d="M6.644 11.094a.5.5 0 0 1 .356-.15h2a.5.5 0 0 1 .356.15c.175.177.39.347.603.496a7.166 7.166 0 0 0 .752.456l.01.006h.003A.5.5 0 0 1 10.5 13h-5a.5.5 0 0 1-.224-.947l.002-.001.01-.006a3.517 3.517 0 0 0 .214-.116 7.5 7.5 0 0 0 .539-.34c.214-.15.428-.319.603-.496ZM7 6.5a1 1 0 1 1 2 0 1 1 0 0 1-2 0Z"/>
+                                        <path d="M2 3a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H2Zm6 1.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4ZM12.5 7a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1Z"/>
+                                    </svg>
+                                    Theo dõi
+                                </button>
+                                <button type="button"  data-bs-dismiss="modal" data-bs-target="#editModal'.$station->id.'" class=" btn btn-sm btn-primary text-center" >
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear m-0" viewBox="0 0 16 16">
+                                        <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
+                                        <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"/>
+                                    </svg>
+                                    Sửa
+                                </button>
+                                <button onclick="openDeteleModal()" data-bs-dismiss="modal"  class=" btn btn-sm btn-danger" >
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3 m-0" viewBox="0 0 16 16">
+                                        <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+                                    </svg>
+                                    Xóa
+                                </button>                               
+                            </div>
+                            <!-- footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Thoát</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end: operation modal -->
+
                 <!--begin: add modal -->
                 <div class="modal fade" id="addModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="staticBackdropLabel">Thêm trạm mới</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form action="index.php?controller=manager&action=addStation" method='post' id="addStation">
-                                <!-- station ID -->
-                                <div class="form-group">
-                                    <label for="stationID">ID</label>
-                                    <input type="text" class="form-control" id="stationID" name="stationID" placeholder="Nhập ID" value="<?php if(isset($_POST['stationID'])) echo $_POST['stationID']; ?>">
-                                    <p class="text-danger">
-                                        <?php
-                                            if (isset($errResultAdd))
-                                                switch ($errResultAdd->idErrAdd) {
-                                                    case 'duplicate':
-                                                        echo "ID đã được đăng ký";
-                                                        break;
-                                                    case 'missing':
-                                                        echo "Xin hãy nhập ID trạm!";
-                                                        break;
-                                                    default: break;
-                                                }
-                                        ?>
-                                    </p>
-                                </div>
-                                <!-- station name -->
-                                <div class="form-group">
-                                    <label for="stationName">Tên trạm</label>
-                                    <input type="text" class="form-control" id="stationName" name="stationName" placeholder="Nhập tên trạm" value="<?php if(isset($_POST['stationName'])) echo $_POST['stationName']; ?>">
-                                    <p class="text-danger">
-                                        <?php
-                                            if (isset($errResultAdd))
-                                                switch ($errResultAdd->nameErrAdd) {
-                                                    case 'invalid':
-                                                        echo "Tên trạm không hợp lệ";
-                                                        break;
-                                                    default: break;
-                                                }
-                                        ?>
-                                    </p>
-                                </div>
-                                <!-- station address -->
-                                <div class="form-group">
-                                    <label for="stationAddress">Địa chỉ</label>
-                                    <input type="text" class="form-control" id="stationAddress" name="stationAddress" placeholder="Nhập địa chỉ trạm" value="<?php if(isset($_POST['stationAddress'])) echo $_POST['stationAddress']; ?>">
-                                    <p class="text-danger">
-                                        <?php
-                                            if (isset($errResultAdd))
-                                                switch ($errResultAdd->addressErrAdd) {
-                                                    case 'invalid':
-                                                        echo "Địa chỉ trạm không hợp lệ";
-                                                        break;
-                                                    default: break;
-                                                }
-                                        ?>
-                                    </p>
-                                </div>
-                                <!-- station capacity -->
-                                <div class="form-group">
-                                    <label for="stationCapacity">Sức chứa</label>
-                                    <input type="number" class="form-control" id="stationCapacity" name="stationCapacity" placeholder="Nhập sức chứa trạm" value="<?php if(isset($_POST['stationCapacity'])) echo $_POST['stationCapacity']; ?>">
-                                    <p class="text-danger">
-                                        <?php
-                                            if (isset($errResultAdd))
-                                                switch ($errResultAdd->capacityErrAdd) {
-                                                    case 'invalid':
-                                                        echo "Sức chứa trạm không hợp lệ";
-                                                        break;
-                                                    default: break;
-                                                }
-                                        ?>
-                                    </p>
-                                </div>
-                                <!-- station num of bikes -->
-                                <div class="form-group">
-                                    <label for="stationNumOfBikes">Số xe trong trạm</label>
-                                    <input type="number" class="form-control" id="stationNumOfBikes" name="stationNumOfBikes" placeholder="Nhập số xe trong trạm">
-                                    <p class="text-danger">
-                                        <?php
-                                            if (isset($errResultAdd))
-                                                switch ($errResultAdd->num_of_bikesErrAdd) {
-                                                    case 'invalid':
-                                                        echo "Số xe trong trạm không hợp lệ";
-                                                        break;
-                                                    default: break;
-                                                }
-                                        ?>
-                                    </p>
-                                </div>
-                                <!-- station status -->
-                                <div class="form-group">
-                                    <label for="stationStatus">Trạng thái</label>
-                                    <input type="text" class="form-control" id="stationStatus" name="stationStatus" placeholder="Nhập số xe trong trạm">
-                                    <p class="text-danger">
-                                        <?php
-                                            if (isset($errResultAdd))
-                                                switch ($errResultAdd->statusErrAdd) {
-                                                    case 'invalid':
-                                                        echo "Tình trạng trạm không hợp lệ";
-                                                        break;
-                                                    default: break;
-                                                }
-                                        ?>
-                                    </p>
-                                </div> 
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel">Thêm trạm mới</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="index.php?controller=manager&action=addStation" method='post' id="addStation">
+                                    <!-- station ID -->
+                                    <div class="form-group">
+                                        <label for="stationID">ID</label>
+                                        <input type="text" class="form-control" id="stationID" name="stationID" placeholder="Nhập ID" value="<?php if(isset($_POST['stationID'])) echo $_POST['stationID']; ?>">
+                                        <p class="text-danger">
+                                            <?php
+                                                if (isset($errResultAdd))
+                                                    switch ($errResultAdd->idErrAdd) {
+                                                        case 'duplicate':
+                                                            echo "ID đã được đăng ký";
+                                                            break;
+                                                        case 'missing':
+                                                            echo "Xin hãy nhập ID trạm!";
+                                                            break;
+                                                        default: break;
+                                                    }
+                                            ?>
+                                        </p>
+                                    </div>
+                                    <!-- station name -->
+                                    <div class="form-group">
+                                        <label for="stationName">Tên trạm</label>
+                                        <input type="text" class="form-control" id="stationName" name="stationName" placeholder="Nhập tên trạm" value="<?php if(isset($_POST['stationName'])) echo $_POST['stationName']; ?>">
+                                        <p class="text-danger">
+                                            <?php
+                                                if (isset($errResultAdd))
+                                                    switch ($errResultAdd->nameErrAdd) {
+                                                        case 'invalid':
+                                                            echo "Tên trạm không hợp lệ";
+                                                            break;
+                                                        default: break;
+                                                    }
+                                            ?>
+                                        </p>
+                                    </div>
+                                    <!-- station address -->
+                                    <div class="form-group">
+                                        <label for="stationAddress">Địa chỉ</label>
+                                        <input type="text" class="form-control" id="stationAddress" name="stationAddress" placeholder="Nhập địa chỉ trạm" value="<?php if(isset($_POST['stationAddress'])) echo $_POST['stationAddress']; ?>">
+                                        <p class="text-danger">
+                                            <?php
+                                                if (isset($errResultAdd))
+                                                    switch ($errResultAdd->addressErrAdd) {
+                                                        case 'invalid':
+                                                            echo "Địa chỉ trạm không hợp lệ";
+                                                            break;
+                                                        default: break;
+                                                    }
+                                            ?>
+                                        </p>
+                                    </div>
+                                    <!-- station capacity -->
+                                    <div class="form-group">
+                                        <label for="stationCapacity">Sức chứa</label>
+                                        <input type="number" class="form-control" id="stationCapacity" name="stationCapacity" placeholder="Nhập sức chứa trạm" value="<?php if(isset($_POST['stationCapacity'])) echo $_POST['stationCapacity']; ?>">
+                                        <p class="text-danger">
+                                            <?php
+                                                if (isset($errResultAdd))
+                                                    switch ($errResultAdd->capacityErrAdd) {
+                                                        case 'invalid':
+                                                            echo "Sức chứa trạm không hợp lệ";
+                                                            break;
+                                                        default: break;
+                                                    }
+                                            ?>
+                                        </p>
+                                    </div>
+                                    <!-- station num of bikes -->
+                                    <div class="form-group">
+                                        <label for="stationNumOfBikes">Số xe trong trạm</label>
+                                        <input type="number" class="form-control" id="stationNumOfBikes" name="stationNumOfBikes" placeholder="Nhập số xe trong trạm">
+                                        <p class="text-danger">
+                                            <?php
+                                                if (isset($errResultAdd))
+                                                    switch ($errResultAdd->num_of_bikesErrAdd) {
+                                                        case 'invalid':
+                                                            echo "Số xe trong trạm không hợp lệ";
+                                                            break;
+                                                        default: break;
+                                                    }
+                                            ?>
+                                        </p>
+                                    </div>
+                                    <!-- station status -->
+                                    <div class="form-group">
+                                        <label for="stationStatus">Trạng thái</label>
+                                        <input type="text" class="form-control" id="stationStatus" name="stationStatus" placeholder="Nhập số xe trong trạm">
+                                        <p class="text-danger">
+                                            <?php
+                                                if (isset($errResultAdd))
+                                                    switch ($errResultAdd->statusErrAdd) {
+                                                        case 'invalid':
+                                                            echo "Tình trạng trạm không hợp lệ";
+                                                            break;
+                                                        default: break;
+                                                    }
+                                            ?>
+                                        </p>
+                                    </div> 
 
-                                <!-- station started day -->
-                                <div class="form-group">
-                                    <label for="stationStartedDay">Ngày đi vào hoạt động</label>
-                                    <input type="date" class="form-control" id="stationStartedDay" name="stationStartedDay" placeholder="Nhập ngày đi vào hoạt động của trạm">
-                                </div>                      
-                                
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Hủy</button>
-                            <button type="button" class="btn btn-primary" onclick='document.getElementById("addStation").submit();'>Xác nhận thêm</button>
-                        </div>
+                                    <!-- station started day -->
+                                    <div class="form-group">
+                                        <label for="stationStartedDay">Ngày đi vào hoạt động</label>
+                                        <input type="date" class="form-control" id="stationStartedDay" name="stationStartedDay" placeholder="Nhập ngày đi vào hoạt động của trạm">
+                                    </div>                      
+                                    
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Hủy</button>
+                                <button type="button" class="btn btn-primary" onclick='document.getElementById("addStation").submit();'>Xác nhận thêm</button>
+                            </div>
                         </div>
                     </div>
                 </div>

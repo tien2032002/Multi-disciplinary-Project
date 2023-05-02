@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="view\style\style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-    <title>bike detail</title>
+    <title>webcam</title>
     <!-- important! google CDN -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
@@ -19,15 +19,7 @@
     <script defer src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script defer src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <script defer src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
-    <script>    
-        $(document).ready(function () {
-            $('#revenueTable').DataTable({
-                search: {
-                    return: true,
-                },
-            });
-        });
-    </script>
+
 </head>
 <body>
     <div class="container-fluid">
@@ -67,7 +59,7 @@
                     </li>
                     <li class="nav-item pt-0">
                         <ul class=" nav flex-column">
-                                <li class="nav-item d-flex align-items-center" style="cursor: pointer;">
+                                <li class="nav-item d-flex align-items-center " style="cursor: pointer;">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-list-task" viewBox="0 0 16 16">
                                         <path fill-rule="evenodd" d="M2 2.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5V3a.5.5 0 0 0-.5-.5H2zM3 3H2v1h1V3z"/>
                                         <path d="M5 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM5.5 7a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 4a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9z"/>
@@ -82,18 +74,18 @@
                                     </svg>
                                     <a class="nav-link active text-white nopadding" href="/environment">Tình trạng môi trường</a>
                                 </li>
-                                <li class="nav-item d-flex align-items-center" style="cursor: pointer;">
+                                <li class="nav-item d-flex align-items-center selected" style="cursor: pointer;">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-camera-fill" viewBox="0 0 16 16">
                                         <path d="M10.5 8.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
                                         <path d="M2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2zm.5 2a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm9 2.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0z"/>
                                     </svg>
                                     <a class="nav-link active text-white nopadding" href="/station_webcam">Theo dõi</a>
-                                </li>   
+                                </li>                                
                         </ul>
                     </li>
                     
                     
-                    <li class="nav-item d-flex align-items-center  selected">
+                    <li class="nav-item d-flex align-items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-receipt text-white" viewBox="0 0 16 16">
                             <path d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z"/>
                             <path d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z"/>
@@ -115,64 +107,78 @@
 
             <!-- content -->
             <div class="content col vh-100" id="mainContent">
-            <div class="content__title">
-                    <div class="h1">Doanh thu tháng</div>
+                <div class="content__title">
+                    <div class="h1">Trạm Bách Khoa</div>
                 </div>
-
-                <div class="revenueChart card w-100 margin-left-10 margin-bot-20" style="min-height: 14rem;">
-                    
-                </div>
-                <!-- begin: detail revenue -->
-                <div class="detail-revenue">
-                    <div class="detail-revenue__title">
-                        <div class="h4">Chi tiết doanh thu 
-                            <select  class="form-control" name="monthlyRevenueSelect" id="monthlyRevenueSelect">
-                                <option value="jan">tháng 1</option>
-                                <option value="feb">tháng 2</option>
-                                <option value="mar">tháng 3</option>
-                                <option value="apr">tháng 4</option>
-                                <option value="may">tháng 5</option>
-                                <option value="jun">tháng 6</option>
-                                <option value="jul">tháng 7</option>
-                                <option value="aug">tháng 8</option>
-                                <option value="sep">tháng 9</option>
-                                <option value="oct">tháng 10</option>
-                                <option value="nov">tháng 11</option>
-                                <option value="dec">tháng 12</option>
-                            </select>
-                        </div>
+                <div class="d-flex justify-content-between">
+                    <!-- begin: stream screen -->
+                    <div class="screen d-flex flex-column align-items-center justify-content-center" style="width: 70%">
+                        <video id="screen__video" playsinline autoplay loop src="">Can't connect</video>
+                        <button class="btn btn-outline-success mt-2" onclick="captureScreen()">Chụp màn hình</button>
                     </div>
-                    <!-- begin: revenue data table -->
-                    <table id="revenueTable" class="table table-striped mt-5" style="width:100%">
-                        <thead>
-                            <tr>
-                                <th scope="col">Ngày </th>
-                                <th scope="col">Doanh thu</th>
-                                <th scope="col">Tổng số giao dịch</th>
-                                <th scope="col">Chi phí bảo dưỡng</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1/4</th>
-                                <td>1.000.000</td>
-                                <td>100</td>
-                                <td>500.000</td>
-                            </tr>
-                            
-                        </tbody>
-                    </table>
-                    <!-- end: revenue data table -->
+                    
+                    <!-- end: stream screen -->
+                    <canvas id="canvas" style="width: 300; height: 225;">
 
+                    </canvas>
                 </div>
-                <!-- end: detail revenue -->
+
             </div>
             
             <!-- end: content -->
+            
         </div>
     </div>
-
-        
-    </script>
 </body>
+<script>
+    const video = document.getElementById('screen__video');
+    let mediaRecorder;
+    async function init(){
+        try {
+            const stream = await navigator.mediaDevices.({
+                audio: true,
+                video: true
+            });
+            starWebcam(stream);
+        } catch(err){
+            console.log(err);
+        }
+
+    }
+
+    function starWebcam(stream){
+        video.srcObject = stream;
+        window.stream = stream;
+    }
+    // call init to star stream video
+    init();
+
+    function captureScreen(){
+        var canvas = document.getElementById("canvas");
+        var video = document.querySelector("#screen__video");
+        var ratio = video.videoHeight / video.videoWidth;
+
+        canvas
+            .getContext("2d")
+            .drawImage(video, 0, 0, canvas.width, canvas.height);
+
+        const playImage = new Image();
+        playImage.src = "path to image asset";
+        playImage.onload = () => {
+            const startX = video.videoWidth / 2 - playImage.width / 2;
+            const startY = video.videoHeight / 2 - playImage.height / 2;
+            canvas
+            .getContext("2d")
+            .drawImage(playImage, startX, startY, canvas.width, canvas.width*ratio);
+            canvas.toBlob() = (blob) => {
+            const img = new Image();
+            img.src = window.URL.createObjectUrl(blob);
+            };
+        };
+        /** End **/
+    }
+
+captureScreen();
+    
+</script>
 </html>
