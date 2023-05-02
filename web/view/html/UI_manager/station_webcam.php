@@ -110,13 +110,18 @@
                 <div class="content__title">
                     <div class="h1">Trạm Bách Khoa</div>
                 </div>
-                <!-- begin: stream screen -->
-                <div class="screen d-flex flex-column align-items-center justify-content-center">
-                    <video id="screen__video" playsinline autoplay loop src="">Can't connect</video>
-                    <button class="btn btn-outline-success mt-2">Chụp màn hình</button>
-                </div>
-                <!-- end: stream screen -->
+                <div class="d-flex justify-content-between">
+                    <!-- begin: stream screen -->
+                    <div class="screen d-flex flex-column align-items-center justify-content-center" style="width: 70%">
+                        <video id="screen__video" playsinline autoplay loop src="">Can't connect</video>
+                        <button class="btn btn-outline-success mt-2" onclick="captureScreen()">Chụp màn hình</button>
+                    </div>
+                    
+                    <!-- end: stream screen -->
+                    <canvas id="canvas" style="width: 300; height: 225;">
 
+                    </canvas>
+                </div>
 
             </div>
             
@@ -130,7 +135,7 @@
     let mediaRecorder;
     async function init(){
         try {
-            const stream = await navigator.mediaDevices.getUserMedia({
+            const stream = await navigator.mediaDevices.({
                 audio: true,
                 video: true
             });
@@ -145,6 +150,35 @@
         video.srcObject = stream;
         window.stream = stream;
     }
+    // call init to star stream video
     init();
+
+    function captureScreen(){
+        var canvas = document.getElementById("canvas");
+        var video = document.querySelector("#screen__video");
+        var ratio = video.videoHeight / video.videoWidth;
+
+        canvas
+            .getContext("2d")
+            .drawImage(video, 0, 0, canvas.width, canvas.height);
+
+        const playImage = new Image();
+        playImage.src = "path to image asset";
+        playImage.onload = () => {
+            const startX = video.videoWidth / 2 - playImage.width / 2;
+            const startY = video.videoHeight / 2 - playImage.height / 2;
+            canvas
+            .getContext("2d")
+            .drawImage(playImage, startX, startY, canvas.width, canvas.width*ratio);
+            canvas.toBlob() = (blob) => {
+            const img = new Image();
+            img.src = window.URL.createObjectUrl(blob);
+            };
+        };
+        /** End **/
+    }
+
+captureScreen();
+    
 </script>
 </html>
