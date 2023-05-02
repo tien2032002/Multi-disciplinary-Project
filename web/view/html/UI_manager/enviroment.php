@@ -19,6 +19,9 @@
     <script defer src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script defer src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <script defer src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        var AIO_key = "<?php echo $stationEnvironment->AIO_key; ?>"
+    </script>
 </head>
 <body onload="clearAllInterval(); humidInterval = setInterval(updateSensorData, 1000, 'temp')">
     <div class="container-fluid">

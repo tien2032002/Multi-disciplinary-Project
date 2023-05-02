@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 06, 2023 at 04:13 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.0.25
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th5 02, 2023 lúc 04:45 PM
+-- Phiên bản máy phục vụ: 10.4.27-MariaDB
+-- Phiên bản PHP: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `manage_bike`
+-- Cơ sở dữ liệu: `bicyclegas`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bike`
+-- Cấu trúc bảng cho bảng `bike`
 --
 
 CREATE TABLE `bike` (
@@ -47,7 +47,7 @@ CREATE TABLE `bike` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `bike`
+-- Đang đổ dữ liệu cho bảng `bike`
 --
 
 INSERT INTO `bike` (`id`, `hired_hours`, `price`, `status`, `name`, `img_URL`, `paint`, `frame`, `saddle`, `size_x`, `size_y`, `size_z`, `weight`, `payload`, `min_height`, `note`) VALUES
@@ -65,7 +65,7 @@ INSERT INTO `bike` (`id`, `hired_hours`, `price`, `status`, `name`, `img_URL`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customer`
+-- Cấu trúc bảng cho bảng `customer`
 --
 
 CREATE TABLE `customer` (
@@ -73,7 +73,7 @@ CREATE TABLE `customer` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `customer`
+-- Đang đổ dữ liệu cho bảng `customer`
 --
 
 INSERT INTO `customer` (`id`) VALUES
@@ -84,7 +84,7 @@ INSERT INTO `customer` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `have_bikes`
+-- Cấu trúc bảng cho bảng `have_bikes`
 --
 
 CREATE TABLE `have_bikes` (
@@ -93,7 +93,7 @@ CREATE TABLE `have_bikes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `have_bikes`
+-- Đang đổ dữ liệu cho bảng `have_bikes`
 --
 
 INSERT INTO `have_bikes` (`station_id`, `bike_id`) VALUES
@@ -111,7 +111,7 @@ INSERT INTO `have_bikes` (`station_id`, `bike_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `hire`
+-- Cấu trúc bảng cho bảng `hire`
 --
 
 CREATE TABLE `hire` (
@@ -125,7 +125,7 @@ CREATE TABLE `hire` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `hire`
+-- Đang đổ dữ liệu cho bảng `hire`
 --
 
 INSERT INTO `hire` (`customer_id`, `bike_id`, `start_time`, `end_time`, `total_time`, `revenue`, `report`) VALUES
@@ -135,7 +135,7 @@ INSERT INTO `hire` (`customer_id`, `bike_id`, `start_time`, `end_time`, `total_t
 -- --------------------------------------------------------
 
 --
--- Table structure for table `maintenance_staff`
+-- Cấu trúc bảng cho bảng `maintenance_staff`
 --
 
 CREATE TABLE `maintenance_staff` (
@@ -143,7 +143,7 @@ CREATE TABLE `maintenance_staff` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `maintenance_staff`
+-- Đang đổ dữ liệu cho bảng `maintenance_staff`
 --
 
 INSERT INTO `maintenance_staff` (`id`) VALUES
@@ -154,7 +154,7 @@ INSERT INTO `maintenance_staff` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `manage`
+-- Cấu trúc bảng cho bảng `manage`
 --
 
 CREATE TABLE `manage` (
@@ -163,7 +163,7 @@ CREATE TABLE `manage` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `manage`
+-- Đang đổ dữ liệu cho bảng `manage`
 --
 
 INSERT INTO `manage` (`manager_id`, `station_id`) VALUES
@@ -176,7 +176,7 @@ INSERT INTO `manage` (`manager_id`, `station_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `manager`
+-- Cấu trúc bảng cho bảng `manager`
 --
 
 CREATE TABLE `manager` (
@@ -184,7 +184,7 @@ CREATE TABLE `manager` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `manager`
+-- Đang đổ dữ liệu cho bảng `manager`
 --
 
 INSERT INTO `manager` (`id`) VALUES
@@ -194,7 +194,7 @@ INSERT INTO `manager` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `station`
+-- Cấu trúc bảng cho bảng `station`
 --
 
 CREATE TABLE `station` (
@@ -211,7 +211,7 @@ CREATE TABLE `station` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `station`
+-- Đang đổ dữ liệu cho bảng `station`
 --
 
 INSERT INTO `station` (`id`, `name`, `started_date`, `capacity`, `num_of_bikes`, `address`, `revenue`, `status`, `longtitude`, `latitude`) VALUES
@@ -219,12 +219,13 @@ INSERT INTO `station` (`id`, `name`, `started_date`, `capacity`, `num_of_bikes`,
 ('002', 'Tram Suoi Tien', '2023-01-01', 25, 25, 'Cong vien van hoa Suoi Tien', 30000000, 'working', '0', '0'),
 ('003', 'Tram KTX', '2023-01-01', 30, 20, 'KTX khu B DHQG TPHCM', 30000000, 'closed', '0', '0'),
 ('004', 'Tram ben xe mien Dong', '2023-01-01', 35, 30, 'Ben xe mien Dong moi', 30000000, 'closed', '0', '0'),
-('005', 'Tram Vincom', '2023-01-01', 30, 30, 'Vincom Mega Mall', 30000000, 'working', '0', '0');
+('005', 'Tram Vincom', '2023-01-01', 30, 30, 'Vincom Mega Mall', 30000000, 'working', '0', '0'),
+('007', 'Trạm UEL', '2023-05-02', 20, 10, 'Dai hoc Bach khoa CS1', 0, 'working', '0', '0');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `station_status`
+-- Cấu trúc bảng cho bảng `station_status`
 --
 
 CREATE TABLE `station_status` (
@@ -232,24 +233,25 @@ CREATE TABLE `station_status` (
   `date_time` datetime DEFAULT curtime(),
   `temperature` int(11) NOT NULL,
   `humidity` int(11) NOT NULL,
-  `status` enum('ok','hot','humid') DEFAULT 'ok'
+  `status` enum('ok','hot','humid') DEFAULT 'ok',
+  `AIO_key` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `station_status`
+-- Đang đổ dữ liệu cho bảng `station_status`
 --
 
-INSERT INTO `station_status` (`station_id`, `date_time`, `temperature`, `humidity`, `status`) VALUES
-('001', '2023-03-11 17:20:10', 30, 70, 'ok'),
-('002', '2023-03-11 17:20:10', 40, 70, 'hot'),
-('003', '2023-03-11 17:20:10', 30, 90, 'humid'),
-('004', '2023-03-11 17:20:10', 25, 70, 'ok'),
-('005', '2023-03-11 17:20:10', 30, 75, 'ok');
+INSERT INTO `station_status` (`station_id`, `date_time`, `temperature`, `humidity`, `status`, `AIO_key`) VALUES
+('001', '2023-03-11 17:20:10', 30, 70, 'ok', 'aio_kOvj15DjUA9mO5E1Zqio1meVvEma'),
+('002', '2023-03-11 17:20:10', 40, 70, 'hot', 'aio_kOvj15DjUA9mO5E1Zqio1meVvEma'),
+('003', '2023-03-11 17:20:10', 30, 90, 'humid', 'aio_kOvj15DjUA9mO5E1Zqio1meVvEma'),
+('004', '2023-03-11 17:20:10', 25, 70, 'ok', 'aio_kOvj15DjUA9mO5E1Zqio1meVvEma'),
+('005', '2023-03-11 17:20:10', 30, 75, 'ok', 'aio_kOvj15DjUA9mO5E1Zqio1meVvEma');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Cấu trúc bảng cho bảng `users`
 --
 
 CREATE TABLE `users` (
@@ -263,7 +265,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `users`
+-- Đang đổ dữ liệu cho bảng `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `password`, `phone_num`, `email`, `address`, `role`) VALUES
@@ -277,117 +279,117 @@ INSERT INTO `users` (`id`, `name`, `password`, `phone_num`, `email`, `address`, 
 ('123456789142', 'Nguyen Tien', '123', '0123456789', 'hung@gmail.com', 'ktx', 'maintenance staff');
 
 --
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `bike`
+-- Chỉ mục cho bảng `bike`
 --
 ALTER TABLE `bike`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `customer`
+-- Chỉ mục cho bảng `customer`
 --
 ALTER TABLE `customer`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `have_bikes`
+-- Chỉ mục cho bảng `have_bikes`
 --
 ALTER TABLE `have_bikes`
   ADD PRIMARY KEY (`station_id`,`bike_id`),
   ADD KEY `bike_id` (`bike_id`);
 
 --
--- Indexes for table `hire`
+-- Chỉ mục cho bảng `hire`
 --
 ALTER TABLE `hire`
   ADD PRIMARY KEY (`customer_id`,`bike_id`,`start_time`),
   ADD KEY `bike_id` (`bike_id`);
 
 --
--- Indexes for table `maintenance_staff`
+-- Chỉ mục cho bảng `maintenance_staff`
 --
 ALTER TABLE `maintenance_staff`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `manage`
+-- Chỉ mục cho bảng `manage`
 --
 ALTER TABLE `manage`
   ADD PRIMARY KEY (`manager_id`,`station_id`),
   ADD KEY `station_id` (`station_id`);
 
 --
--- Indexes for table `manager`
+-- Chỉ mục cho bảng `manager`
 --
 ALTER TABLE `manager`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `station`
+-- Chỉ mục cho bảng `station`
 --
 ALTER TABLE `station`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `station_status`
+-- Chỉ mục cho bảng `station_status`
 --
 ALTER TABLE `station_status`
   ADD PRIMARY KEY (`station_id`);
 
 --
--- Indexes for table `users`
+-- Chỉ mục cho bảng `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- Constraints for dumped tables
+-- Các ràng buộc cho các bảng đã đổ
 --
 
 --
--- Constraints for table `customer`
+-- Các ràng buộc cho bảng `customer`
 --
 ALTER TABLE `customer`
   ADD CONSTRAINT `customer_ibfk_1` FOREIGN KEY (`id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `have_bikes`
+-- Các ràng buộc cho bảng `have_bikes`
 --
 ALTER TABLE `have_bikes`
   ADD CONSTRAINT `have_bikes_ibfk_1` FOREIGN KEY (`station_id`) REFERENCES `station` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `have_bikes_ibfk_2` FOREIGN KEY (`bike_id`) REFERENCES `bike` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `hire`
+-- Các ràng buộc cho bảng `hire`
 --
 ALTER TABLE `hire`
   ADD CONSTRAINT `hire_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `hire_ibfk_2` FOREIGN KEY (`bike_id`) REFERENCES `bike` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `maintenance_staff`
+-- Các ràng buộc cho bảng `maintenance_staff`
 --
 ALTER TABLE `maintenance_staff`
   ADD CONSTRAINT `maintenance_staff_ibfk_1` FOREIGN KEY (`id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `manage`
+-- Các ràng buộc cho bảng `manage`
 --
 ALTER TABLE `manage`
   ADD CONSTRAINT `manage_ibfk_1` FOREIGN KEY (`manager_id`) REFERENCES `manager` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `manage_ibfk_2` FOREIGN KEY (`station_id`) REFERENCES `station` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `manager`
+-- Các ràng buộc cho bảng `manager`
 --
 ALTER TABLE `manager`
   ADD CONSTRAINT `manager_ibfk_1` FOREIGN KEY (`id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `station_status`
+-- Các ràng buộc cho bảng `station_status`
 --
 ALTER TABLE `station_status`
   ADD CONSTRAINT `station_status_ibfk_1` FOREIGN KEY (`station_id`) REFERENCES `station` (`id`);

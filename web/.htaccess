@@ -14,9 +14,15 @@ RewriteRule ^guest/(.+) index.php?controller=guest&action=$1 [NC,L]
 
 RewriteRule ^manager/(.+) index.php?controller=manager&action=$1 [NC,L]
 
-RewriteRule ^station-detail/(.*)/([0-9]*) index/php?action=station_detail&stationID=$2&stationName=$1
+RewriteRule ^station-detail/(.*)/([0-9]*) index.php?action=station_detail&stationID=$2&stationName=$1
 
-RewriteRule ^bike-detail/(.*)/([0-9]*) index/php?action=bike_detail&bikeID=$2&bikeName=$1
+RewriteRule ^station-environment/(.*)/([0-9]*) index.php?action=station_environment&stationID=$2&stationName=$1
+
+RewriteRule ^station-camera/(.*)/([0-9]*) index.php?action=station_camera&stationID=$2&stationName=$1
+
+RewriteRule ^bike-detail/(.*)/([0-9]*) index.php?action=bike_detail&bikeID=$2&bikeName=$1
+
+RewriteRule ^revenue/([0-9]*) index.php?action=revenue_month&month=$1
 
 RewriteRule ^(.*)$ index.php?action=$1 [NC,L,QSA]
 

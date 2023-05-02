@@ -1,5 +1,4 @@
 //AIO key
-AIO_key = 'aio_Dgbq82ICs1tJjZdgrnK2yyuhNPZh'
 
 //functions to change mode of fan
 

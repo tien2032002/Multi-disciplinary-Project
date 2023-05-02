@@ -175,4 +175,16 @@
                          "checkAll" => $checkAll);
         return $result;
     }
+
+    function delete_station($stationID) {
+        require('model/db.php');
+        mysqli_query($con, "DELETE FROM station_status WHERE station_id='$stationID'");
+        mysqli_query($con, "DELETE FROM station WHERE id='$stationID'");
+    }
+
+    function get_station_environment($stationID) {
+        require('model/db.php');
+        
+        return mysqli_query($con, "SELECT * FROM station_status WHERE station_id='$stationID'")->fetch_object();
+    }
 ?>

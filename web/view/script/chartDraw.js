@@ -16,8 +16,6 @@ function getDateTime(str){
     return str.substring(11, 16) + '\n' + str.substring(5, 10)
 }
 
-var AIO_key = 'aio_Dgbq82ICs1tJjZdgrnK2yyuhNPZh';
-
 function updateSensorData(sensor) {
     var sensorData = []
     var time = []
@@ -34,7 +32,8 @@ function updateSensorData(sensor) {
             data.forEach((element, index) => {
                 if (index%10 == 0) {
                     sensorData[index/10] = element.value
-                    time[index/10] = getDateTime(element.expiration)
+                    console.log(element)
+                    time[index/10] = getDateTime(element.created_at)
                 }
             });
             sensorData = sensorData.reverse()

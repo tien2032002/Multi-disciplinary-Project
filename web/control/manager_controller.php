@@ -118,5 +118,25 @@
 
         }
 
+        function delete_station() {
+            include('model\station_db.php');
+            delete_station($_GET['stationID']);
+            header('Location: station_list');
+        }
+
+        function station_environment() {
+            include('model\station_db.php');
+            $data = array('stationEnvironment' => get_station_environment($_GET['stationID']));
+            $this->render('view\html\UI_manager\enviroment', $data);
+        }
+
+        function revenue_month() {
+            include("model/revenue.php");
+            $data = array('revenueList' => get_revenue($_GET['month']),
+                          'month' => $_GET['month']);
+            $this->render('view\html\UI_manager\revenue_month', $data);
+        }
     }
+
+
 ?>
