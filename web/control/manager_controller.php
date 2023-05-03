@@ -42,6 +42,11 @@
             $this->render("view/html/UI_manager/station_webcam");
         }
 
+        function update_webcam() {
+            require('model\webcam_db.php');
+            echo get_frame()->frame_number;
+        }
+
         function logout() {
             //logout
             if (!isset($_SESSION)) session_start();
