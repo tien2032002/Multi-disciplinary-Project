@@ -60,7 +60,9 @@
         }
 
         function user_webpage() {
-            $this->render("view\html\UI_manager\user_webpage");
+            include("model\manager_db.php");
+            $data = array('employeeList' => getEmployeeList());
+            $this->render("view\html\UI_manager\user_webpage", $data);
         }
 
         function addStation() {
@@ -143,5 +145,16 @@
         }
     }
 
+    function add_employee() {
+        include("model\manager_db.php");
+        
+    }
 
+    function update_employee() {
+        include("model\manager_db.php");
+    }
+
+    function delete_employee() {
+        include("model\manager_db.php");
+    }
 ?>

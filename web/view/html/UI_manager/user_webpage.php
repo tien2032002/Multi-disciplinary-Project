@@ -115,56 +115,156 @@
 
             <!-- content -->
             <div class="content col vh-100" id="mainContent">
+                <!-- page title -->
+                <div class="content__title">
+                    <div class="h1">Quản Lý Nhân Viên</div>
+                    <br>
+                </div>
                 <!-- content -->
                 <!-- begin: data table -->
                 <table id="example" class="table table-striped" style="width:100%">
                     <thead>
                         <tr>
+                            <th>ID</th>
                             <th>Tên</th>
-                            <th>Trạm làm việc</th>
-                            <th>Tuổi</th>
-                            <th>Ngày bắt đầu</th>
                             <th>SĐT</th>
                             <th>Email</th>
-                            <th>Lương</th>
+                            <th>Địa chỉ</th>
                             <th>Tác vụ</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Tiger Nixon</td>
-                            <td>Edinburgh</td>
-                            <td>61</td>
-                            <td>2011-04-25</td>
-                            <td>0944742389</td>
-                            <td>eicute@hcmut.edu.vn</td>
-                            <td>$320,800</td>
-                            <td>
-                                <button type="button" data-bs-toggle="modal" data-bs-target="#editModal" class="btn btn-sm btn-primary text-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear m-0" viewBox="0 0 16 16">
-                                        <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
-                                        <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"/>
-                                    </svg>
-                                    Sửa
-                                </button>
-                                <button type="button" data-bs-toggle="modal" data-bs-target="#deleteModal" class="btn btn-sm btn-danger">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3 m-0" viewBox="0 0 16 16">
-                                        <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
-                                    </svg>
-                                    Xóa
-                                </button>
-                            </td>
-                        </tr>
+                        <?php
+                            foreach($employeeList as $employee) {
+                                //table
+                                echo '
+                                <tr>
+                                    <td>'.$employee->id.'</td>
+                                    <td>'.$employee->name.'</td>
+                                    <td>'.$employee->phone_num.'</td>
+                                    <td>'.$employee->email.'</td>
+                                    <td>'.$employee->address.'</td>
+                                    <td>
+                                        <button type="button" data-bs-toggle="modal" data-bs-target="#editModal'.$employee->id.'" class="btn btn-sm btn-primary text-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear m-0" viewBox="0 0 16 16">
+                                                <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
+                                                <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"/>
+                                            </svg>
+                                            Sửa
+                                        </button>
+                                        <button type="button" data-bs-toggle="modal" data-bs-target="#deleteModal'.$employee->id.'" class="btn btn-sm btn-danger">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3 m-0" viewBox="0 0 16 16">
+                                                <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+                                            </svg>
+                                            Xóa
+                                        </button>
+                                    </td>
+                                </tr>
+                                ';
+                                //edit modal
+                                echo '
+                                <!--begin: edit modal -->
+                                <div class="modal fade" id="editModal'.$employee->id.'" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="staticBackdropLabel">Chỉnh sửa thông tin nhân viên</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="index.php?controller=manager&action=addBike" method="post" id="update_employee">
+                                                <!-- staff ID -->
+                                                <div class="form-group">
+                                                    <label for="staffID">ID</label>
+                                                    <input type="text" class="form-control" id="staffID" name="staffID" placeholder="Nhập ID" value="'.$employee->id.'">
+                                                    <p class="text-danger">
+                                                        
+                                                    </p>
+                                                </div>
+                                                <!-- staff name -->
+                                                <div class="form-group">
+                                                    <label for="staffName">Tên nhân viên</label>
+                                                    <input type="text" class="form-control" id="staffName" name="staffName" placeholder="Nhập tên nhân viên" value="'.$employee->name.'">
+                                                    <p class="text-danger">
+                                                        
+                                                    </p>
+                                                </div>
+
+                                                <!-- staff phone number -->
+                                                <div class="form-group">
+                                                    <label for="phoneNumber">Số điện thoại</label>
+                                                    <input type="phone" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Nhập số điện thoại" value="'.$employee->phone_num.'">
+                                                    <p class="text-danger">
+                                                        <?php
+                                                            
+                                                        ?>
+                                                    </p>
+                                                </div>
+
+                                                <!-- staff email -->
+                                                <div class="form-group">
+                                                    <label for="emailAddress">Địa chỉ mail</label>
+                                                    <input type="mail" class="form-control" id="emailAddress" name="emailAddress" placeholder="Nhập địa chỉ mail" value="'.$employee->email.'">
+                                                    <p class="text-danger">
+                                                        <?php
+                                                            
+                                                        ?>
+                                                    </p>
+                                                </div>
+
+                                                <!-- staff wage -->
+                                                <div class="form-group">
+                                                    <label for="staffWage">Địa chỉ</label>
+                                                    <input type="text" class="form-control" id="staffWage" name="staffWage" placeholder="Nhập địa chỉ nhân viên" value="'.$employee->address.'">
+                                                    <p class="text-danger">
+                                                        <?php
+                                                            
+                                                        ?>
+                                                    </p>
+                                                </div>
+                                                
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Hủy</button>
+                                            <button type="button" class="btn btn-primary" onclick="">Lưu thay đổi</button>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--end: edit modal -->
+                                ';
+
+                                //delete modal
+                                echo '
+                                <!-- begin: delete modal -->
+                                <div class="modal fade" id="deleteModal'.$employee->id.'" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="staticBackdropLabel">Xác nhận xóa?</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Quay lại</button>
+                                            <a><button type="button" class="btn btn-danger">Xác nhận</button></a>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end: delete modal -->
+                                ';
+                            }
+                        ?>
+                        
                     </tbody>
                     <tfoot>
                         <tr>
+                            <th>ID</th>
                             <th>Tên</th>
-                            <th>Trạm làm việc</th>
-                            <th>Tuổi</th>
-                            <th>Ngày bắt đầu</th>
                             <th>SĐT</th>
                             <th>Email</th>
-                            <th>Lương</th>
+                            <th>Địa chỉ</th>
                             <th>Tác vụ</th>
                         </tr>
                     </tfoot>
@@ -205,7 +305,7 @@
                             </div>
                             <!-- staff name -->
                             <div class="form-group">
-                                <label for="staffName">Tên xe</label>
+                                <label for="staffName">Tên nhân viên</label>
                                 <input type="text" class="form-control" id="staffName" name="staffName" placeholder="Nhập tên nhân viên" value="<?php if(isset($_POST['staffName'])) echo $_POST['staffName']; ?>">
                                 <p class="text-danger">
                                     <?php
@@ -216,28 +316,6 @@
                                                     break;
                                                 default: break;
                                             }
-                                    ?>
-                                </p>
-                            </div>
-
-                            <!-- staff age -->
-                            <div class="form-group">
-                                <label for="staffAge">Tuổi</label>
-                                <input type="number" class="form-control" id="staffAge" name="staffAge" placeholder="Nhập tuổi nhân viên" >
-                                <p class="text-danger">
-                                    <?php
-                                        
-                                    ?>
-                                </p>
-                            </div>
-                           
-                            <!-- started date -->
-                            <div class="form-group">
-                                <label for="startedDate">Ngày bắt đầu</label>
-                                <input type="date" class="form-control" id="startedDate" name="startedDate" placeholder="Nhập ngày bắt đầu làm việc" >
-                                <p class="text-danger">
-                                    <?php
-                                        
                                     ?>
                                 </p>
                             </div>
@@ -266,8 +344,8 @@
 
                             <!-- staff wage -->
                             <div class="form-group">
-                                <label for="staffWage">Lương</label>
-                                <input type="number" class="form-control" id="staffWage" name="staffWage" placeholder="Nhập lương nhân viên" >
+                                <label for="staffWage">Địa chỉ</label>
+                                <input type="text" class="form-control" id="staffWage" name="staffWage" placeholder="Nhập địa chỉ nhân viên" >
                                 <p class="text-danger">
                                     <?php
                                         
@@ -286,136 +364,6 @@
             </div>
             <!--end: add modal -->
 
-            <!-- begin: delete modal -->
-            <div class="modal fade" id="deleteModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Xác nhận xóa?</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Quay lại</button>
-                        <a href="index.php?controller=manager&action=delete_station&stationID='.$station->id.'"><button type="button" class="btn btn-danger">Xác nhận</button></a>
-                    </div>
-                    </div>
-                </div>
-            </div>
-            <!-- end: delete modal -->
-
-            <!--begin: edit modal -->
-            <div class="modal fade" id="editModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Chỉnh sửa thông tin nhân viên</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="index.php?controller=manager&action=addBike" method='post' id="addBike">
-                            <!-- staff ID -->
-                            <div class="form-group">
-                                <label for="staffID">ID</label>
-                                <input type="text" class="form-control" id="staffID" name="staffID" placeholder="Nhập ID" value="<?php if(isset($_POST['bikeID'])) echo $_POST['bikeID']; ?>">
-                                <p class="text-danger">
-                                    <?php
-                                        if (isset($errResultAdd))
-                                            switch ($errResultAdd->idErrAdd) {
-                                                case 'duplicate':
-                                                    echo "ID đã được đăng ký";
-                                                    break;
-                                                case 'missing':
-                                                    echo "Xin hãy nhập ID nhân viên!";
-                                                    break;
-                                                default: break;
-                                            }
-                                    ?>
-                                </p>
-                            </div>
-                            <!-- staff name -->
-                            <div class="form-group">
-                                <label for="staffName">Tên xe</label>
-                                <input type="text" class="form-control" id="staffName" name="staffName" placeholder="Nhập tên nhân viên" value="<?php if(isset($_POST['staffName'])) echo $_POST['staffName']; ?>">
-                                <p class="text-danger">
-                                    <?php
-                                        if (isset($errResultAdd))
-                                            switch ($errResultAdd->nameErrAdd) {
-                                                case 'invalid':
-                                                    echo "Tên nhân viên không hợp lệ";
-                                                    break;
-                                                default: break;
-                                            }
-                                    ?>
-                                </p>
-                            </div>
-
-                            <!-- staff age -->
-                            <div class="form-group">
-                                <label for="staffAge">Tuổi</label>
-                                <input type="number" class="form-control" id="staffAge" name="staffAge" placeholder="Nhập tuổi nhân viên" >
-                                <p class="text-danger">
-                                    <?php
-                                        
-                                    ?>
-                                </p>
-                            </div>
-                           
-                            <!-- started date -->
-                            <div class="form-group">
-                                <label for="startedDate">Ngày bắt đầu</label>
-                                <input type="date" class="form-control" id="startedDate" name="startedDate" placeholder="Nhập ngày bắt đầu làm việc" >
-                                <p class="text-danger">
-                                    <?php
-                                        
-                                    ?>
-                                </p>
-                            </div>
-
-                            <!-- staff phone number -->
-                            <div class="form-group">
-                                <label for="phoneNumber">Số điện thoại</label>
-                                <input type="phone" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Nhập số điện thoại" >
-                                <p class="text-danger">
-                                    <?php
-                                        
-                                    ?>
-                                </p>
-                            </div>
-
-                            <!-- staff email -->
-                            <div class="form-group">
-                                <label for="emailAddress">Địa chỉ mail</label>
-                                <input type="mail" class="form-control" id="emailAddress" name="emailAddress" placeholder="Nhập địa chỉ mail" >
-                                <p class="text-danger">
-                                    <?php
-                                        
-                                    ?>
-                                </p>
-                            </div>
-
-                            <!-- staff wage -->
-                            <div class="form-group">
-                                <label for="staffWage">Lương</label>
-                                <input type="number" class="form-control" id="staffWage" name="staffWage" placeholder="Nhập lương nhân viên" >
-                                <p class="text-danger">
-                                    <?php
-                                        
-                                    ?>
-                                </p>
-                            </div>
-                            
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Hủy</button>
-                        <button type="button" class="btn btn-primary" onclick=''>Lưu thay đổi</button>
-                    </div>
-                    </div>
-                </div>
-            </div>
-            <!--end: edit modal -->
-
-            
         </div>
     </div>
 
