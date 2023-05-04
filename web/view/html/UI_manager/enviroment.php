@@ -19,12 +19,82 @@
     <script defer src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script defer src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <script defer src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <style>
+        /* alert css */
+        .body{
+            overflow: hidden;   
+        }
+        .alert{
+            background-color: red;
+            position: absolute;
+            top : 10px;
+            right: 0px;
+            border-radius: 4px;
+            border-left: 8px solid #7f0000;
+        }
+
+        .alert__icon{
+            transform: translateY(-50%);
+        }
+
+        .alert__msg{
+            color: #fff;
+        }
+
+        .alert__close-btn{
+            cursor: pointer;
+        }
+
+        .alert.show{
+            animation: show_slide 1s ease forwards;
+        }
+
+        .hide{
+            display: none;
+        }
+
+        @keyframes show_slide {
+            0%{
+                transform: translateX(100%);
+            }
+            40%{
+                transform: translateX(-10%);
+            }
+            80%{
+                transform: translateX(0%);
+            }
+            100%{
+                transform: translateX(-10px);
+            }
+        }
+
+    </style>
     <script>
         var AIO_key = "<?php echo $stationEnvironment->AIO_key; ?>"
+
     </script>
 </head>
 <body onload="clearAllInterval(); humidInterval = setInterval(updateSensorData, 1000, 'temp')">
     <div class="container-fluid">
+        
+        <!-- begin: alert -->
+        <div class="alert show">
+            <span class="alert__icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#fff" class="bi bi-exclamation-triangle" viewBox="0 0 16 16">
+                    <path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/>
+                    <path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z"/>
+                </svg>
+            </span>
+            <span class="alert__msg">Cảnh báo: Nhiệt độ tại trạm vượt ngưỡng cho phép</span>
+            <span class="alert__close-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-x-circle" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                </svg>
+            </span>
+        </div>
+        <!-- end: alert -->
+        
         <div class="row mw-100">
             <!--begin: vertical navbar -->
             <div class="col-md-auto background-primary-color vh-100 nopadding">
@@ -107,7 +177,8 @@
             </div>
             <!--end: vertical navbar -->
 
-            <!-- content -->
+
+            <!-- content -->            
             <div class="content col vh-100" id="mainContent">
                 <div class="content__title">
                     <div class="h1">Tình trạng môi trường</div>
@@ -159,5 +230,13 @@
 
     <script src="view\script\chartDraw.js"></script>
     <script src="view\script\controlFan.js"></script>
+    <script src="view\script\checkInput.js"></script>
+    <script>
+        $('.alert__close-btn').click(function(){
+            $('.alert').removeClass("show");
+            $('.alert').addClass("hide");
+        });
+        
+    </script>
 </body>
 </html>

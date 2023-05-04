@@ -28,6 +28,7 @@
             });
         });
     </script>
+    
 </head>
 
 <?php
@@ -510,6 +511,8 @@
             </div>
             
             <!-- end: content -->
+
+            
         </div>
     </div>
 
