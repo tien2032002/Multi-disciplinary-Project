@@ -27,6 +27,28 @@
                 },
             });
         });
+
+        function getRevenue(element)
+        {
+            var link = "revenue/" + element.value.toString()
+            console.log(link);
+            $.ajax({
+                // The link we are accessing.
+                url: link,
+                    
+                // The type of request.
+                type: "get",
+                    
+                // The type of data that is getting returned.
+                dataType: "html",
+
+                success: function( strData ){
+                    document.getElementById("revenue").innerHTML = strData;
+                    console.log("do")
+                    
+                }
+            });
+        }
     </script>
 </head>
 <body>
@@ -115,7 +137,7 @@
 
             <!-- content -->
             <div class="content col vh-100" id="mainContent">
-            <div class="content__title">
+                <div class="content__title">
                     <div class="h1">Doanh thu tháng</div>
                 </div>
 
@@ -126,19 +148,19 @@
                 <div class="detail-revenue">
                     <div class="detail-revenue__title">
                         <div class="h4">Chi tiết doanh thu 
-                            <select  class="form-control" name="monthlyRevenueSelect" id="monthlyRevenueSelect">
-                                <option value="jan">tháng 1</option>
-                                <option value="feb">tháng 2</option>
-                                <option value="mar">tháng 3</option>
-                                <option value="apr">tháng 4</option>
-                                <option value="may">tháng 5</option>
-                                <option value="jun">tháng 6</option>
-                                <option value="jul">tháng 7</option>
-                                <option value="aug">tháng 8</option>
-                                <option value="sep">tháng 9</option>
-                                <option value="oct">tháng 10</option>
-                                <option value="nov">tháng 11</option>
-                                <option value="dec">tháng 12</option>
+                            <select  class="form-control" name="monthlyRevenueSelect" id="monthlyRevenueSelect" onchange="getRevenue(this)">
+                                <option value="01">tháng 1</option>
+                                <option value="02">tháng 2</option>
+                                <option value="03">tháng 3</option>
+                                <option value="04">tháng 4</option>
+                                <option value="05">tháng 5</option>
+                                <option value="06">tháng 6</option>
+                                <option value="07">tháng 7</option>
+                                <option value="08">tháng 8</option>
+                                <option value="09">tháng 9</option>
+                                <option value="10">tháng 10</option>
+                                <option value="11">tháng 11</option>
+                                <option value="12">tháng 12</option>
                             </select>
                         </div>
                     </div>
@@ -148,21 +170,17 @@
                             <tr>
                                 <th scope="col">Ngày </th>
                                 <th scope="col">Doanh thu</th>
-                                <th scope="col">Tổng số giao dịch</th>
-                                <th scope="col">Chi phí bảo dưỡng</th>
+                                <th scope="col">Tổng số lượt thuê</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1/4</th>
-                                <td>1.000.000</td>
-                                <td>100</td>
-                                <td>500.000</td>
-                            </tr>
+                        <tbody id="revenue">
                             
                         </tbody>
                     </table>
                     <!-- end: revenue data table -->
+                    <div class="content__title">
+                    <div class="h4">Tổng: </div>
+                </div>
 
                 </div>
                 <!-- end: detail revenue -->
@@ -172,7 +190,8 @@
         </div>
     </div>
 
-        
+    <script>
+        getRevenue(document.getElementById("monthlyRevenueSelect"))
     </script>
 </body>
 </html>

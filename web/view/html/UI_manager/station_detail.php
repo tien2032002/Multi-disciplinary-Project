@@ -160,6 +160,120 @@
                                         <button data-bs-toggle="modal" data-bs-target="#deleteModal" type="button" class="btn btn-sm btn-danger">Xóa</button>
                                     </td>
                                 </tr>
+                                <!--begin: edit modal -->
+                                <div class="modal fade" id="editModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="staticBackdropLabel">Chỉnh sửa thông tin xe</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="index.php?controller=manager&action=updateBike'.$bike->id.'" method="post" id="updateBike'.$bike->id.'">
+                                                <!-- station ID -->
+                                                <div class="form-group">
+                                                    <label for="bikeID">ID</label>
+                                                    <input type="text" class="form-control" id="bikeID" name="bikeID" placeholder="Nhập ID" value="'.$bike->id.'">
+                                                    <p class="text-danger">
+
+                                                    </p>
+                                                </div>
+                                                <!-- bike name -->
+                                                <div class="form-group">
+                                                    <label for="bikeName">Tên xe</label>
+                                                    <input type="text" class="form-control" id="bikeName" name="bikeName" placeholder="Nhập tên xe" value="'.$bike->name.'">
+                                                    <p class="text-danger">
+
+                                                    </p>
+                                                </div>
+                                                <!-- rent Price -->
+                                                <div class="form-group">
+                                                    <label for="rentPrice">Giá cho thuê</label>
+                                                    <input type="number" class="form-control" id="rentPrice" name="rentPrice" placeholder="Nhập giá cho thuê" value="'.$bike->price.'">
+                                                    <p class="text-danger">
+
+                                                    </p>
+                                                </div>
+                                                <!-- bike img -->
+                                                <div class="form-group">
+                                                    <label for="bikeImg">Link ảnh</label>
+                                                    <input type="text" class="form-control" id="bikeImg" name="bikeImg" placeholder="Nhập url dẫn tới ảnh của xe" value="'.$bike->img_URL.'">
+                                                    <p class="text-danger">
+   
+                                                    </p>
+                                                </div>
+                                                <!-- bike paint -->
+                                                <div class="form-group">
+                                                    <label for="bikePaint">Chất liệu sơn</label>
+                                                    <input type="text" class="form-control" id="bikePaint" name="bikePaint" placeholder="Nhập chất liệu sơn">
+                                                    <p class="text-danger">
+                                                        <?php
+                                                            
+                                                        ?>
+                                                    </p>
+                                                </div>
+                                                <!-- bike size -->
+                                                <div class="form-group">
+                                                    <label for="bikeSize">Kích thước xe</label>
+                                                    <input type="text" class="form-control" id="bikeSize" name="bikeSize" placeholder="Nhập kích thước xe, cú pháp size_x - size_y - size_z">
+                                                    <p class="text-danger">
+                                                    </p>
+                                                </div> 
+
+                                                <!-- bike weight -->
+                                                <div class="form-group">
+                                                    <label for="bikeWeight">Trọng lượng xe</label>
+                                                    <input type="number" class="form-control" id="bikeWeight" name="bikeWeight" placeholder="Nhập trọng lượng xe">
+                                                    <p class="text-danger">
+                                                        <?php
+                                                            
+                                                        ?>
+                                                    </p>
+                                                </div>
+                                                
+                                                <!-- bike payload -->
+                                                <div class="form-group">
+                                                    <label for="bikePayload">Tải trọng nguyên xe</label>
+                                                    <input type="number" class="form-control" id="bikePayload" name="bikePayload" placeholder="Nhập tải trọng của xe">
+                                                    <p class="text-danger">
+                                                        <?php
+                                                            
+                                                        ?>
+                                                    </p>
+                                                </div>  
+
+                                                <!-- recommend height-->
+                                                <div class="form-group">
+                                                    <label for="recommendHeight">Chiều cao khuyến nghị</label>
+                                                    <input type="number" class="form-control" id="recommendHeight" name="recommendHeight" placeholder="Nhập chiều cao khuyến nghị cho người dùng">
+                                                    <p class="text-danger">
+                                                        <?php
+                                                            
+                                                        ?>
+                                                    </p>
+                                                </div>  
+
+                                                <!-- utilities -->
+                                                <div class="form-group">
+                                                    <label for="utilities">Tiện ích</label>
+                                                    <input type="text" class="form-control" id="utilities" name="utilities" placeholder="Nhập tiện ích của xe">
+                                                    <p class="text-danger">
+                                                        <?php
+                                                            
+                                                        ?>
+                                                    </p>
+                                                </div> 
+                                                
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Hủy</button>
+                                            <button type="button" class="btn btn-primary" onclick="">Lưu thay đổi</button>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--end: edit modal -->
                                 ';
 
                             }
@@ -305,176 +419,17 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Hủy</button>
-                        <button type="button" class="btn btn-primary" onclick='document.getElementById("addStation").submit();'>Xác nhận thêm</button>
+                        <button type="button" class="btn btn-primary" onclick='document.getElementById("addBike").submit();'>Xác nhận thêm</button>
                     </div>
                     </div>
                 </div>
             </div>
             <!--end: add modal -->
 
-            <!-- begin: delete modal -->
-            <div class="modal fade" id="deleteModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Xác nhận xóa?</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Quay lại</button>
-                        <a href="index.php?controller=manager&action=delete_station&stationID='.$station->id.'"><button type="button" class="btn btn-danger">Xác nhận</button></a>
-                    </div>
-                    </div>
-                </div>
-            </div>
-            <!-- end: delete modal -->
-
-            <!--begin: edit modal -->
-            <div class="modal fade" id="editModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Chỉnh sửa thông tin xe</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="index.php?controller=manager&action=addBike" method='post' id="addBike">
-                            <!-- station ID -->
-                            <div class="form-group">
-                                <label for="bikeID">ID</label>
-                                <input type="text" class="form-control" id="bikeID" name="bikeID" placeholder="Nhập ID" value="<?php if(isset($_POST['bikeID'])) echo $_POST['bikeID']; ?>">
-                                <p class="text-danger">
-                                    <?php
-                                        if (isset($errResultAdd))
-                                            switch ($errResultAdd->idErrAdd) {
-                                                case 'duplicate':
-                                                    echo "ID đã được đăng ký";
-                                                    break;
-                                                case 'missing':
-                                                    echo "Xin hãy nhập ID xe!";
-                                                    break;
-                                                default: break;
-                                            }
-                                    ?>
-                                </p>
-                            </div>
-                            <!-- bike name -->
-                            <div class="form-group">
-                                <label for="bikeName">Tên xe</label>
-                                <input type="text" class="form-control" id="bikeName" name="bikeName" placeholder="Nhập tên xe" value="<?php if(isset($_POST['bikeName'])) echo $_POST['bikeName']; ?>">
-                                <p class="text-danger">
-                                    <?php
-                                        if (isset($errResultAdd))
-                                            switch ($errResultAdd->nameErrAdd) {
-                                                case 'invalid':
-                                                    echo "Tên xe không hợp lệ";
-                                                    break;
-                                                default: break;
-                                            }
-                                    ?>
-                                </p>
-                            </div>
-                            <!-- rent Price -->
-                            <div class="form-group">
-                                <label for="rentPrice">Giá cho thuê</label>
-                                <input type="number" class="form-control" id="rentPrice" name="rentPrice" placeholder="Nhập giá cho thuê" value="<?php if(isset($_POST['rentPrice'])) echo $_POST['rentPrice']; ?>">
-                                <p class="text-danger">
-                                    <?php
-                                        
-                                    ?>
-                                </p>
-                            </div>
-                            <!-- bike img -->
-                            <div class="form-group">
-                                <label for="bikeImg">Link ảnh</label>
-                                <input type="text" class="form-control" id="bikeImg" name="bikeImg" placeholder="Nhập url dẫn tới ảnh của xe" value="<?php if(isset($_POST['bikeImg'])) echo $_POST['bikeImg']; ?>">
-                                <p class="text-danger">
-                                    <?php
-                                        
-                                    ?>
-                                </p>
-                            </div>
-                            <!-- bike paint -->
-                            <div class="form-group">
-                                <label for="bikePaint">Chất liệu sơn</label>
-                                <input type="text" class="form-control" id="bikePaint" name="bikePaint" placeholder="Nhập chất liệu sơn">
-                                <p class="text-danger">
-                                    <?php
-                                        
-                                    ?>
-                                </p>
-                            </div>
-                            <!-- bike size -->
-                            <div class="form-group">
-                                <label for="bikeSize">Kích thước xe</label>
-                                <input type="text" class="form-control" id="bikeSize" name="bikeSize" placeholder="Nhập kích thước xe, cú pháp size_x - size_y - size_z">
-                                <p class="text-danger">
-                                    <?php
-                                        
-                                    ?>
-                                </p>
-                            </div> 
-
-                            <!-- bike weight -->
-                            <div class="form-group">
-                                <label for="bikeWeight">Trọng lượng xe</label>
-                                <input type="number" class="form-control" id="bikeWeight" name="bikeWeight" placeholder="Nhập trọng lượng xe">
-                                <p class="text-danger">
-                                    <?php
-                                        
-                                    ?>
-                                </p>
-                            </div>
-                            
-                            <!-- bike payload -->
-                            <div class="form-group">
-                                <label for="bikePayload">Tải trọng nguyên xe</label>
-                                <input type="number" class="form-control" id="bikePayload" name="bikePayload" placeholder="Nhập tải trọng của xe">
-                                <p class="text-danger">
-                                    <?php
-                                        
-                                    ?>
-                                </p>
-                            </div>  
-
-                            <!-- recommend height-->
-                            <div class="form-group">
-                                <label for="recommendHeight">Chiều cao khuyến nghị</label>
-                                <input type="number" class="form-control" id="recommendHeight" name="recommendHeight" placeholder="Nhập chiều cao khuyến nghị cho người dùng">
-                                <p class="text-danger">
-                                    <?php
-                                        
-                                    ?>
-                                </p>
-                            </div>  
-
-                            <!-- utilities -->
-                            <div class="form-group">
-                                <label for="utilities">Tiện ích</label>
-                                <input type="text" class="form-control" id="utilities" name="utilities" placeholder="Nhập tiện ích của xe">
-                                <p class="text-danger">
-                                    <?php
-                                        
-                                    ?>
-                                </p>
-                            </div> 
-                            
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Hủy</button>
-                        <button type="button" class="btn btn-primary" onclick=''>Lưu thay đổi</button>
-                    </div>
-                    </div>
-                </div>
-            </div>
-            <!--end: edit modal -->
-
-            <!-- end: content -->
         </div>
     </div>
 
-        
+    <!-- abc -->
     </script>
 </body>
 </html>

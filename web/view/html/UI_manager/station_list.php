@@ -154,12 +154,12 @@
                             echo '
                             <tr>
                                 <th scope="row">'.$station->id.'</th>
-                                <td  data-bs-toggle="modal" data-bs-target="#operationModal" style="cursor:pointer;">'.$station->name.'</td>
+                                <td  data-bs-toggle="modal" data-bs-target="#operationModal'.$station->id.'" style="cursor:pointer;">'.$station->name.'</td>
                                 <td>'.$station->address.'</td>
                                 <td>'.$station->started_date.'</td>
                                 <td>'.$station->capacity.'</td>
                                 <td>'.$station->num_of_bikes.'</td>
-                                <td>'.$station->revenue.'</td>
+                                <td>'.number_format($station->revenue, 0).'</td>
                                 <td>'.$station->status.'</td>
                                 <td>
                                     <button type="button" data-bs-toggle="modal"  data-bs-target="#editModal'.$station->id.'" class=" btn btn-sm btn-primary text-center" >
@@ -321,53 +321,63 @@
                                 </div>
                                 <!-- end: edit modal -->
                             ';
+
+                            //operation modal
+
+                            echo '
+                            <!-- begin: operation modal -->
+                            <div class="modal fade" id="operationModal'.$station->id.'" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog ">
+                                    <div class="modal-content">
+                                        <!-- header -->
+                                        <div class="modal-header">
+                                            <h2>Tác vụ</h2>
+                                        </div>
+                                        <!-- body -->
+                                        <div class="modal-body d-flex flex-column align-items-center">
+                                            <button type="button" href="index.php?controller=manager&action=station_detail&stationID='.$station->id.'" class="btn btn-sm ps-3 pe-3" style="background-color: #79bc53; width: 60%;">
+                                                <a href="station-detail/'.UrlNormal($station->name).'/'.$station->id.'" style="all: unset;">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-list-task" viewBox="0 0 16 16">
+                                                        <path fill-rule="evenodd" d="M2 2.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5V3a.5.5 0 0 0-.5-.5H2zM3 3H2v1h1V3z"/>
+                                                        <path d="M5 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM5.5 7a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 4a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9z"/>
+                                                        <path fill-rule="evenodd" d="M1.5 7a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5V7zM2 7h1v1H2V7zm0 3.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5H2zm1 .5H2v1h1v-1z"/>
+                                                    </svg>
+                                                    <bold class="text-white text-left"> Danh sách xe </bold>
+                                                </a>
+                                            </button>
+                                            <button type="button" href="index.php?controller=manager&action=environment&stationID='.$station->id.'" class="mt-2 btn btn-sm text-center ps-3 pe-3" style="background-color: #84cd65 ;width: 60%;">
+                                                <a href="station-environment/'.UrlNormal($station->name).'/'.$station->id.'" style="all: unset;">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-thermometer-sun m-0" viewBox="0 0 16 16">
+                                                        <path d="M5 12.5a1.5 1.5 0 1 1-2-1.415V2.5a.5.5 0 0 1 1 0v8.585A1.5 1.5 0 0 1 5 12.5z"/>
+                                                        <path d="M1 2.5a2.5 2.5 0 0 1 5 0v7.55a3.5 3.5 0 1 1-5 0V2.5zM3.5 1A1.5 1.5 0 0 0 2 2.5v7.987l-.167.15a2.5 2.5 0 1 0 3.333 0L5 10.486V2.5A1.5 1.5 0 0 0 3.5 1zm5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1a.5.5 0 0 1 .5-.5zm4.243 1.757a.5.5 0 0 1 0 .707l-.707.708a.5.5 0 1 1-.708-.708l.708-.707a.5.5 0 0 1 .707 0zM8 5.5a.5.5 0 0 1 .5-.5 3 3 0 1 1 0 6 .5.5 0 0 1 0-1 2 2 0 0 0 0-4 .5.5 0 0 1-.5-.5zM12.5 8a.5.5 0 0 1 .5-.5h1a.5.5 0 1 1 0 1h-1a.5.5 0 0 1-.5-.5zm-1.172 2.828a.5.5 0 0 1 .708 0l.707.708a.5.5 0 0 1-.707.707l-.708-.707a.5.5 0 0 1 0-.708zM8.5 12a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1a.5.5 0 0 1 .5-.5z"/>
+                                                    </svg>
+                                                    <bold class="text-white">Nhiệt độ & độ ẩm </bold>
+                                                </a>
+                                            </button>
+                                            <button data-bs-dismiss="modal"  class="mt-2 btn btn-sm " style="background-color:#90d176; width: 60%;" >
+                                                <a href="station-camera/'.UrlNormal($station->name).'/'.$station->id.'" style="all: unset;">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-webcam-fill" viewBox="0 0 16 16"> 
+                                                        <path d="M6.644 11.094a.5.5 0 0 1 .356-.15h2a.5.5 0 0 1 .356.15c.175.177.39.347.603.496a7.166 7.166 0 0 0 .752.456l.01.006h.003A.5.5 0 0 1 10.5 13h-5a.5.5 0 0 1-.224-.947l.002-.001.01-.006a3.517 3.517 0 0 0 .214-.116 7.5 7.5 0 0 0 .539-.34c.214-.15.428-.319.603-.496ZM7 6.5a1 1 0 1 1 2 0 1 1 0 0 1-2 0Z"/>
+                                                        <path d="M2 3a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H2Zm6 1.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4ZM12.5 7a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1Z"/>
+                                                    </svg>
+                                                    <bold class="text-white">Theo dõi </bold>
+                                                </a>
+                                            </button>
+                                                                        
+                                        </div>
+                                        <!-- footer -->
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Thoát</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end: operation modal -->
+                            ';
                         } 
                         ?>
                 </table>
                 <!-- end: data table -->
-
-                <!-- begin: operation modal -->
-                <div class="modal fade" id="operationModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog ">
-                        <div class="modal-content">
-                            <!-- header -->
-                            <div class="modal-header">
-                                <h2>Tác vụ</h2>
-                            </div>
-                            <!-- body -->
-                            <div class="modal-body d-flex flex-column align-items-center">
-                                <button type="button" href="index.php?controller=manager&action=station_detail&stationID='.$station->id.'" class="btn btn-sm text-center ps-3 pe-3" style="background-color: #79bc53; width: 60%;">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-list-task" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd" d="M2 2.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5V3a.5.5 0 0 0-.5-.5H2zM3 3H2v1h1V3z"/>
-                                        <path d="M5 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM5.5 7a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 4a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9z"/>
-                                        <path fill-rule="evenodd" d="M1.5 7a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5V7zM2 7h1v1H2V7zm0 3.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5H2zm1 .5H2v1h1v-1z"/>
-                                    </svg>
-                                    <bold class="text-white"> Quản lí trạm </bold>
-                                </button>
-                                <button type="button" href="index.php?controller=manager&action=environment&stationID='.$station->id.'" class="mt-2 btn btn-sm text-center ps-3 pe-3" style="background-color: #84cd65 ;width: 60%;">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-thermometer-sun m-0" viewBox="0 0 16 16">
-                                        <path d="M5 12.5a1.5 1.5 0 1 1-2-1.415V2.5a.5.5 0 0 1 1 0v8.585A1.5 1.5 0 0 1 5 12.5z"/>
-                                        <path d="M1 2.5a2.5 2.5 0 0 1 5 0v7.55a3.5 3.5 0 1 1-5 0V2.5zM3.5 1A1.5 1.5 0 0 0 2 2.5v7.987l-.167.15a2.5 2.5 0 1 0 3.333 0L5 10.486V2.5A1.5 1.5 0 0 0 3.5 1zm5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1a.5.5 0 0 1 .5-.5zm4.243 1.757a.5.5 0 0 1 0 .707l-.707.708a.5.5 0 1 1-.708-.708l.708-.707a.5.5 0 0 1 .707 0zM8 5.5a.5.5 0 0 1 .5-.5 3 3 0 1 1 0 6 .5.5 0 0 1 0-1 2 2 0 0 0 0-4 .5.5 0 0 1-.5-.5zM12.5 8a.5.5 0 0 1 .5-.5h1a.5.5 0 1 1 0 1h-1a.5.5 0 0 1-.5-.5zm-1.172 2.828a.5.5 0 0 1 .708 0l.707.708a.5.5 0 0 1-.707.707l-.708-.707a.5.5 0 0 1 0-.708zM8.5 12a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1a.5.5 0 0 1 .5-.5z"/>
-                                    </svg>
-                                    <bold class="text-white">Nhiệt độ & độ ẩm </bold>
-                                </button>
-                                <button data-bs-dismiss="modal"  class="mt-2 btn btn-sm " style="background-color:#90d176; width: 60%;" >
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-webcam-fill" viewBox="0 0 16 16"> 
-                                        <path d="M6.644 11.094a.5.5 0 0 1 .356-.15h2a.5.5 0 0 1 .356.15c.175.177.39.347.603.496a7.166 7.166 0 0 0 .752.456l.01.006h.003A.5.5 0 0 1 10.5 13h-5a.5.5 0 0 1-.224-.947l.002-.001.01-.006a3.517 3.517 0 0 0 .214-.116 7.5 7.5 0 0 0 .539-.34c.214-.15.428-.319.603-.496ZM7 6.5a1 1 0 1 1 2 0 1 1 0 0 1-2 0Z"/>
-                                        <path d="M2 3a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H2Zm6 1.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4ZM12.5 7a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1Z"/>
-                                    </svg>
-                                    <bold class="text-white">Theo dõi </bold>
-                                </button>
-                                                            
-                            </div>
-                            <!-- footer -->
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Thoát</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- end: operation modal -->
 
                 <!--begin: add modal -->
                 <div class="modal fade" id="addModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -495,8 +505,6 @@
                     </div>
                 </div>
                 <!--end: add modal -->
-
-
 
                 <button type="button" data-bs-toggle="modal" data-bs-target="#addModal" class="btn btn-sm btn-primary mb-3">Thêm trạm mới</button> 
             </div>
