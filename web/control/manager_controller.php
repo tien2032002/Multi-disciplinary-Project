@@ -38,7 +38,7 @@
             $this->render("view/html/UI_manager/revenue");
         }
 
-        function station_webcam() {
+        function station_camera() {
             $this->render("view/html/UI_manager/station_webcam");
         }
 
